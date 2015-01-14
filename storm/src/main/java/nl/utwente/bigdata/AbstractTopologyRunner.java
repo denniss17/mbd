@@ -11,6 +11,7 @@ import backtype.storm.StormSubmitter;
 import backtype.storm.generated.AlreadyAliveException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.generated.StormTopology;
+import backtype.storm.utils.Utils;
 
 public abstract class AbstractTopologyRunner {
 	
@@ -23,11 +24,9 @@ public abstract class AbstractTopologyRunner {
         LocalCluster cluster = new LocalCluster();        
         cluster.submitTopology(name, conf, topology);   
 
-        /*
-            Run for 10 minutes, otherwise you can't see the effect of the 2 minute tickle.
-        */     
-        //Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 10 * 60 * 1000 + "")));
-        //cluster.shutdown();
+        //Run for 30 seconds before shutdown
+        Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 30 * 1000 + "")));
+        cluster.shutdown();
     }
     
     // start 
