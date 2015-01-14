@@ -47,48 +47,59 @@ public class Assignment4_1 extends AbstractTopologyRunner {
 		String boltId = "";
 		String prevId;
 		
-		boltId = "spout"; 
-		builder.setSpout(boltId, new JsonSpout()); 
+		/*
+		 * Modification begin
+		 */
+		boltId = "source";
+		builder.setSpout(boltId,new JsonSpout());// -> "tweet"
+		prevId = boltId;
+
+		boltId = "totext";
+		builder.setBolt(boltId, new TweetJsonToTextBolt()).shuffleGrouping(prevId); // "tweet" -> "words"
 		prevId = boltId;
 		
-		boltId = "textify"; 
-		builder.setBolt(boltId, new TweetJsonToTextBolt()).shuffleGrouping(prevId); 
+		boltId = "ngramer";
+		builder.setBolt(boltId, new NGramerBolt()).shuffleGrouping(prevId); // "words" -> "n-gram"
 		prevId = boltId;
 		
-		boltId = "ngram"; 
-		builder.setBolt(boltId, new NGramerBolt()).shuffleGrouping(prevId); 
-		prevId = boltId;
-		
+		/* 
+		 * Inline definition of the file output bolt
+		 */
 		boltId = "file";
         // sync the filesystem after every 1k tuples
-        SyncPolicy syncPolicy = new CountSyncPolicy(1000);
+        SyncPolicy syncPolicy = new CountSyncPolicy(10000);
         // rotate files when they reach 1MB
         FileRotationPolicy rotationPolicy = new FileSizeRotationPolicy(1, FileSizeRotationPolicy.Units.MB);
         // where to save files and how should they be called
-        FileNameFormat fileNameFormat = new DefaultFileNameFormat()
-                .withPath("/tmp/")
-                .withExtension(".txt");
+        FileNameFormat fileNameFormat = new DefaultFileNameFormat().withPath("/home/martijn/data/").withExtension(".txt");
         // use "|" instead of "," for field delimiter
-        RecordFormat format = new DelimitedRecordFormat()
-                .withFieldDelimiter("\n");
+        RecordFormat format = new DelimitedRecordFormat().withFieldDelimiter("|");
 		HdfsBolt bolt = new HdfsBolt()
-        .withFsUrl("file://tmp")         // save on local filesystem (testing purposes) 
+        .withFsUrl("file://home/martijn/data")
         .withFileNameFormat(fileNameFormat)
         .withRecordFormat(format)
         .withRotationPolicy(rotationPolicy)
         .withSyncPolicy(syncPolicy)
-        .addRotationAction(new MoveFileAction().toDestination("/tmp/")); // move old files 
+        .addRotationAction(new MoveFileAction().toDestination("/home/martijn/data")); // move old files 
 		
 		builder.setBolt(boltId, bolt).shuffleGrouping(prevId);
 		prevId = boltId;
 		
+		
+		/*
+		 * Modification end
+		 */
 		StormTopology topology = builder.createTopology();
 		return topology;
-		        
 	}
 	
     
     public static void main(String[] args) {
-    	new Assignment4_1().run(args);;
+    	
+    	String[] a = new String[2];
+    	a[0] = "Topology41";
+    	a[1] = "local";
+    	
+    	new Assignment4_1().run(a);
     }
 }

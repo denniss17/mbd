@@ -25,8 +25,12 @@ public abstract class AbstractTopologyRunner {
     	StormTopology topology = buildTopology(properties);
         Config conf = new Config();        
         LocalCluster cluster = new LocalCluster();        
-        cluster.submitTopology(name, conf, topology);        
-        Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 60 * 1000 + "")));
+        cluster.submitTopology(name, conf, topology);   
+
+        /*
+            Run for 10 minutes, otherwise you can't see the effect of the 2 minute tickle.
+        */     
+        Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 10 * 60 * 1000 + "")));
         cluster.shutdown();
     }
     

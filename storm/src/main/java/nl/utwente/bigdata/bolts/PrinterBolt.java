@@ -31,6 +31,7 @@ public class PrinterBolt extends BaseBasicBolt {
   private String id;
   private String topology;
 
+  @SuppressWarnings("rawtypes")
   @Override
   public void prepare(Map stormConf, TopologyContext context) {
 	  this.id = context.getThisComponentId();

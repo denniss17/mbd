@@ -17,13 +17,8 @@
  */
 package nl.utwente.bigdata.bolts;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
-import java.util.Queue;
-
-import com.google.common.collect.ImmutableList;
 
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -34,32 +29,43 @@ import backtype.storm.tuple.Values;
 
 public class MovingAvgBolt extends BaseBasicBolt {
 	private static final long serialVersionUID = 394263766896592119L;
-	private static final int W = 100;
+	private static final int W = 1000;
 	
-	private double average;
-	private Queue<Double> queue = new ArrayDeque<Double>();
+	private ArrayList<Double> vals = new ArrayList<Double>(100);
+	private double avg = 0;
+	private boolean bufferFilled = false;
+	private int index = 0;
 	
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		// Get number and add to queue
-		double number = tuple.getDouble(0);
-		queue.add(number);
+		double d = tuple.getDoubleByField("number");
+
+		/*
+		 *  Recompute the average every W times (to prevent floating point error accumulation)
+		 */
+		if(index == W) { index = 0; bufferFilled = true; avg = average(vals); }
 		
-		if(queue.size() == W){
-			// Calculate average
-			double sum = 0;
-			for(double d : queue){
-				sum += d;
-			}
-			average = sum / W;
-			collector.emit(new Values(average));
-		}else if(queue.size() == W+1){
-			// Recalculate the average by removing the first and adding the last
-			// This could be not accurate (when numbers get rounded)
-			average -= queue.poll() / W;
-			average += number / W;
-			collector.emit(new Values(average));
+		if(bufferFilled) {
+			/*
+			 * Update the moving average, for speed don't recompute the entire average but use math trick.
+			 */
+			avg = avg + (d - vals.get(index))/W;
+			vals.set(index, d);
+			collector.emit(new Values(avg));
+		} 
+		else {
+			vals.add(d);
 		}
+
+		index++;
+	}
+	
+	private double average(List<Double> l) {
+		if(l.size() == 0) { return 0; }
+		
+		double sum = 0;
+		for(Double d : l) { sum += d; }
+		return sum/l.size();
 	}
 
 	@Override

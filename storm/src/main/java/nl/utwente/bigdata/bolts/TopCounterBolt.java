@@ -17,12 +17,14 @@
  */
 package nl.utwente.bigdata.bolts;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import nl.utwente.bigdata.util.TupleHelpers;
@@ -36,43 +38,66 @@ import backtype.storm.tuple.Values;
 
 public class TopCounterBolt extends BaseBasicBolt {
 	private static final long serialVersionUID = 394263766896592119L;
-	private static final long K = 50;
+	private static int K = 5;
 	
 	private Map<String, Integer> counter = new HashMap<String, Integer>();
-	private ValueComparator bvc =  new ValueComparator(counter);
-	private TreeMap<String,Integer> sortedMap = new TreeMap<String,Integer>(bvc);
 	
-	@Override
-	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		if (TupleHelpers.isTickTuple(tuple)) {
-			// this was a chronological tickle tuple - generate output
-			
-			// Sort by value
-			sortedMap.putAll(counter);
-			
-			// Emit K results
-			int count = 0;
-			for(Map.Entry<String, Integer> entry : sortedMap.entrySet()){
-				if(count<K){
-					collector.emit(new Values(entry.getKey(), entry.getValue()));
-					count++;
-				}
-			}
-		} else {
-			// Increase counter
-			String token = tuple.getString(0);
-			Integer count = counter.get(token);
-			if (count == null) {
-				count = 0;
-			}
-			count = count + 1;
-			counter.put(token, count);
-		}
+	public TopCounterBolt(int top) {
+		super();
+		K = top;
 	}
 
 	@Override
+	public void execute(Tuple tuple, BasicOutputCollector collector) {
+		
+		if (TupleHelpers.isTickTuple(tuple)) 
+		{
+			// Map -> sorted LinkedHashMap -> sorted List
+			List<Entry<String,Integer>>  list= new ArrayList<Entry<String,Integer>>(sortByValues(counter).entrySet());
+			
+			for(int i = 0; i<K; i++) {
+				Integer ival = list.get(i).getValue();
+				String sval = list.get(i).getKey();
+				collector.emit(new Values(sval, ival));
+			}
+			
+			counter.clear();
+		}
+		else 
+		{
+			String word = tuple.getStringByField("word");
+		
+			if(counter.containsKey(word)) {
+				Integer i = counter.get(word);
+				counter.put(word,i+1);
+			} 
+			else 
+			{
+				counter.put(word, 1);
+			}
+		}
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private <K extends Comparable, V extends Comparable> Map<K,V> sortByValues(Map<K,V> map){
+		List<Map.Entry<K,V>> entries = new LinkedList<Map.Entry<K,V>>(map.entrySet());
+        
+		Collections.sort(entries, new Comparator<Map.Entry<K,V>>() {
+            @SuppressWarnings("unchecked")
+			@Override
+            public int compare(Entry<K, V> o1, Entry<K, V> o2) { return o2.getValue().compareTo(o1.getValue()); }
+        });
+     
+        Map<K,V> sortedMap = new LinkedHashMap<K,V>();
+     
+        for(Map.Entry<K,V> entry: entries) { sortedMap.put(entry.getKey(), entry.getValue()); }
+     
+        return sortedMap;
+    }
+	
+	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("obj", "count"));
+		declarer.declare(new Fields("word", "count"));
 	}
 
 	@Override
@@ -80,24 +105,5 @@ public class TopCounterBolt extends BaseBasicBolt {
 		Map<String, Object> conf = new HashMap<String, Object>();
 		conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 120);
 		return conf;
-	} 
-	
-	// Comperator which sorts a TreeMap by value
-	// Source: http://stackoverflow.com/questions/109383/how-to-sort-a-mapkey-value-on-the-values-in-java
-	class ValueComparator implements Comparator<String> {
-
-	    Map<String, Integer> base;
-	    public ValueComparator(Map<String, Integer> base) {
-	        this.base = base;
-	    }
-
-	    // Note: this comparator imposes orderings that are inconsistent with equals.    
-	    public int compare(String a, String b) {
-	        if (base.get(a) >= base.get(b)) {
-	            return -1;
-	        } else {
-	            return 1;
-	        } // returning 0 would merge keys
-	    }
 	}
 }

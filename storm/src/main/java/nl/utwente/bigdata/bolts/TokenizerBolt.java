@@ -32,7 +32,8 @@ public class TokenizerBolt extends BaseBasicBolt {
   private static final long serialVersionUID = 394263766896592119L;
   private String field;
 
-  @Override
+  @SuppressWarnings("rawtypes")
+@Override
   public void prepare(Map stormConf, TopologyContext context) {
 	  this.field = "words";
   }
@@ -47,7 +48,7 @@ public class TokenizerBolt extends BaseBasicBolt {
 
   @Override
   public void declareOutputFields(OutputFieldsDeclarer declarer) {
-	  declarer.declare(new Fields("words"));
+	  declarer.declare(new Fields("word"));
   }
 
 }

@@ -40,6 +40,8 @@ public class Assignment4_3 extends AbstractTopologyRunner {
 		builder.setSpout(boltId, new RandomNumberBolt());
 		prevId = boltId;
 		
+		// TODO: add topology generation for assignment 4.3 here: Add the 
+		// completed MovingAvgBolt
 		boltId = "movingavg"; 
 		builder.setBolt(boltId, new MovingAvgBolt()).shuffleGrouping(prevId); 
 		prevId = boltId;
@@ -55,6 +57,11 @@ public class Assignment4_3 extends AbstractTopologyRunner {
 	
     
     public static void main(String[] args) {
-    	new Assignment4_3().run(args);;
+    	
+    	String[] a = new String[2];
+    	a[0] = "Topology43";
+    	a[1] = "local";
+    	
+    	new Assignment4_3().run(a);
     }
 }

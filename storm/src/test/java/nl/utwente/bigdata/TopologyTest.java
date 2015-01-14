@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class TopologyTest {
 
+	/*
 	@Test
 	public void test() throws IOException {
 		Properties properties = new Properties();
@@ -15,6 +16,7 @@ public class TopologyTest {
         PrintTwitter topology = new PrintTwitter();
 		topology.runLocal("test", properties);
 	}
+	*/
 	
 	@Test
 	public void testRandomTweet() {
@@ -22,7 +24,6 @@ public class TopologyTest {
 		SaveRandomTweets topology = new SaveRandomTweets();
 		topology.runLocal("test", properties);
 	}
-
 	
 	@Test
 	public void testRandomTokenziedTweet() {

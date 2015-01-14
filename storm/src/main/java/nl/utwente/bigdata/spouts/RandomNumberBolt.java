@@ -44,7 +44,7 @@ public class RandomNumberBolt extends BaseRichSpout {
 
   @Override
   public void nextTuple() {
-    Utils.sleep(100);    
+    Utils.sleep(10);    
     _collector.emit(new Values(_rand.nextDouble()*100));
   }
 

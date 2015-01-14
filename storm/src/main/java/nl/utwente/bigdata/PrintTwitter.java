@@ -60,6 +60,6 @@ public class PrintTwitter extends AbstractTopologyRunner {
 	
     
     public static void main(String[] args) {
-    	new PrintTwitter().run(args);;
+    	new PrintTwitter().run(args);
     }
 }

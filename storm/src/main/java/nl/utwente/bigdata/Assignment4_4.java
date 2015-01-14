@@ -18,20 +18,80 @@
 
 package nl.utwente.bigdata;
 
-public class Assignment4_4 {   
-	/*
-	 * This depends on the bolt which receives the output of the TopCounterBolt
-	 * 
-	 * Fields grouping is usefull when the next bolt combines the results of all TopCounterBolts.
-	 * Each TopCounterBolt can now run on a subset of the input, for example by looking to the first 
-	 * character of the words.
-	 * 
-	 * Shuffle grouping however could also give reasonable results, as it is probable that the most frequent values 
-	 * of the individual TopCounterBolts would be approximately the same when using only one bolt.
-	 * 
-	 * All and global grouping would only abolish the benefit of having multiple instances, as this would simply
-	 * send all input to all instances or to a single instance respectively.
-	 */
+import java.util.Properties;
+
+import nl.utwente.bigdata.bolts.PrinterBolt;
+import nl.utwente.bigdata.bolts.TokenizerBolt;
+import nl.utwente.bigdata.bolts.TopCounterBolt;
+import nl.utwente.bigdata.bolts.TweetJsonToTextBolt;
+import nl.utwente.bigdata.spouts.JsonSpout;
+import backtype.storm.generated.StormTopology;
+import backtype.storm.topology.TopologyBuilder;
+import backtype.storm.tuple.Fields;
+
+public class Assignment4_4 extends AbstractTopologyRunner {   
 	
+	@Override
+	protected StormTopology buildTopology(Properties properties) {
+		TopologyBuilder builder = new TopologyBuilder();
+      
+		String boltId = "";
+		String prevId;
+		
+		/*
+		TweetJSON -> 
+		TweetText AND TweetLanguage/Location -> 
+		pass it if it contains goal in the appropriate language ->
+		count the amount of goals for a certain time ->
+		write the result to a database
+		*/
+		
+		
+		/*
+		 * Modification begin
+		 */
+		boltId = "source";
+		builder.setSpout(boltId, new JsonSpout()); // -> "tweet"
+		prevId = boltId;
+		
+		boltId = "totext";
+		builder.setBolt(boltId, new TweetJsonToTextBolt()).shuffleGrouping(prevId); // "tweet" -> "words"
+		prevId = boltId;
+		
+		boltId = "tokenize";
+		builder.setBolt(boltId, new TokenizerBolt()).shuffleGrouping(prevId); // "words" -> "word"
+		prevId = boltId;
+		
+		int parallelism = 1;
+		
+		boltId = "topcounter";
+		builder.setBolt(boltId, new TopCounterBolt(5),parallelism).fieldsGrouping(prevId, new Fields("word")); // "word" -> "word", "count"
+		prevId = boltId;
+		
+		/*The input to TopCounter from the tokenizer has to be grouped by field.
+		 * In this case the field to distinguish the values is the word string,
+		 * in order to make sure that all instances of the same word end up 
+		 * in the same topcounter.
+		 */
+		
+		boltId = "printer";
+		builder.setBolt(boltId, new PrinterBolt()).shuffleGrouping(prevId);
+		prevId = boltId;		
+		/*
+		 * Modification end
+		 */
+		
+		StormTopology topology = builder.createTopology();
+		return topology;        
+	}
 	
+    
+    public static void main(String[] args) {
+    	
+    	String[] a = new String[2];
+    	a[0] = "Topology44";
+    	a[1] = "local";
+    	
+    	new Assignment4_2().run(a);
+    }
 }

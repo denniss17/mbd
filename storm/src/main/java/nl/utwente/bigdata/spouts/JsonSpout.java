@@ -65,7 +65,6 @@ public class JsonSpout extends BaseRichSpout {
 
   @Override
   public void nextTuple() {
-    Utils.sleep(100);
     String sentence = sentences.get(_rand.nextInt(sentences.size()));
     _collector.emit(new Values(sentence));
   }
