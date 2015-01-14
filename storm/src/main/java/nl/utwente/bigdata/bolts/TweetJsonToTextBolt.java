@@ -47,6 +47,7 @@ public class TweetJsonToTextBolt extends BaseBasicBolt {
         Map<String, Object> tweet = (Map<String, Object>) parser.parse(tuple.getString(0));
         
         String text = (String) tweet.get("text");
+        System.out.println(text);
         collector.emit(new Values(text));
       }
       catch (ClassCastException e) {      	
