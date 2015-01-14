@@ -1,0 +1,3390 @@
+[
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Yuichi NISHIMURA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Toru SAGARA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Toshiyuki NAGI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43938", 
+      "goals": [
+        {
+          "player_id": "218284", 
+          "player": "MARCELO", 
+          "minute": "11", 
+          "time": "2014-06-12 17:11:00"
+        }
+      ], 
+      "name": "Croatia"
+    }, 
+    "score": [
+      3, 
+      1
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-06-12 17:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [
+        {
+          "player_id": "314197", 
+          "player": "NEYMAR JR", 
+          "minute": "29", 
+          "time": "2014-06-12 17:29:00"
+        }, 
+        {
+          "player_id": "312868", 
+          "player": "OSCAR", 
+          "minute": "90+1", 
+          "time": "2014-06-12 19:01:00"
+        }
+      ], 
+      "name": "Brazil"
+    }, 
+    "id": "300186456"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Wilmar ROLDAN"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Humberto CLAVIJO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Eduardo DIAZ"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43849", 
+      "goals": [], 
+      "name": "Cameroon"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Estadio das Dunas", 
+    "time": "2014-06-13 13:00:00", 
+    "home": {
+      "id": "43911", 
+      "goals": [
+        {
+          "player_id": "227851", 
+          "player": "O. PERALTA", 
+          "minute": "61", 
+          "time": "2014-06-13 14:31:00"
+        }
+      ], 
+      "name": "Mexico"
+    }, 
+    "id": "300186492"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nicola RIZZOLI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Renato FAVERANI"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Andrea STEFANI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43960", 
+      "goals": [
+        {
+          "player_id": "217315", 
+          "player": "V. PERSIE", 
+          "minute": "44", 
+          "time": "2014-06-13 16:44:00"
+        }, 
+        {
+          "player_id": "184616", 
+          "player": "ROBBEN", 
+          "minute": "53", 
+          "time": "2014-06-13 17:23:00"
+        }, 
+        {
+          "player_id": "313021", 
+          "player": "DE VRIJ", 
+          "minute": "65", 
+          "time": "2014-06-13 17:35:00"
+        }
+      ], 
+      "name": "Netherlands"
+    }, 
+    "score": [
+      1, 
+      5
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-06-13 16:00:00", 
+    "home": {
+      "id": "43969", 
+      "goals": [
+        {
+          "player_id": "207528", 
+          "player": "ALONSO", 
+          "type": "PEN", 
+          "minute": "27 PEN", 
+          "time": "2014-06-13 16:27:00"
+        }
+      ], 
+      "name": "Spain"
+    }, 
+    "id": "300186510"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Noumandiez DOUE"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Songuifolo YEO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Jean Claude BIRUMUSHAHU"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Roberto MORENO"
+      }
+    ], 
+    "away": {
+      "id": "43976", 
+      "goals": [
+        {
+          "player_id": "213001", 
+          "player": "CAHILL", 
+          "minute": "35", 
+          "time": "2014-06-13 18:35:00"
+        }
+      ], 
+      "name": "Australia"
+    }, 
+    "score": [
+      3, 
+      1
+    ], 
+    "stadium": "Arena Pantanal", 
+    "time": "2014-06-13 18:00:00", 
+    "home": {
+      "id": "43925", 
+      "goals": [
+        {
+          "player_id": "228627", 
+          "player": "ALEXIS", 
+          "minute": "12", 
+          "time": "2014-06-13 18:12:00"
+        }, 
+        {
+          "player_id": "202655", 
+          "player": "VALDIVIA", 
+          "minute": "14", 
+          "time": "2014-06-13 18:14:00"
+        }, 
+        {
+          "player_id": "209502", 
+          "player": "BEAUSEJOUR", 
+          "minute": "90+2", 
+          "time": "2014-06-13 20:02:00"
+        }
+      ], 
+      "name": "Chile"
+    }, 
+    "id": "300186473"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Mark GEIGER"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Sean HURD"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Joe FLETCHER"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43949", 
+      "goals": [], 
+      "name": "Greece"
+    }, 
+    "score": [
+      3, 
+      0
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-06-14 13:00:00", 
+    "home": {
+      "id": "43926", 
+      "goals": [
+        {
+          "player_id": "200213", 
+          "player": "P. ARMERO", 
+          "minute": "5", 
+          "time": "2014-06-14 13:05:00"
+        }, 
+        {
+          "player_id": "309716", 
+          "player": "TEO", 
+          "minute": "58", 
+          "time": "2014-06-14 14:28:00"
+        }, 
+        {
+          "player_id": "269058", 
+          "player": "JAMES", 
+          "minute": "90+3", 
+          "time": "2014-06-14 15:03:00"
+        }
+      ], 
+      "name": "Colombia"
+    }, 
+    "id": "300186471"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Felix BRYCH"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mark BORSCH"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Stefan LUPP"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Victor CARRILLO"
+      }
+    ], 
+    "away": {
+      "id": "43901", 
+      "goals": [
+        {
+          "player_id": "307529", 
+          "player": "CAMPBELL J.", 
+          "minute": "54", 
+          "time": "2014-06-14 17:24:00"
+        }, 
+        {
+          "player_id": "312987", 
+          "player": "DUARTE O.", 
+          "minute": "57", 
+          "time": "2014-06-14 17:27:00"
+        }, 
+        {
+          "player_id": "270144", 
+          "player": "URE\u00c3\u0091A M.", 
+          "minute": "84", 
+          "time": "2014-06-14 17:54:00"
+        }
+      ], 
+      "name": "Costa Rica"
+    }, 
+    "score": [
+      1, 
+      3
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-06-14 16:00:00", 
+    "home": {
+      "id": "43930", 
+      "goals": [
+        {
+          "player_id": "267834", 
+          "player": "E. CAVANI", 
+          "type": "PEN", 
+          "minute": "24 PEN", 
+          "time": "2014-06-14 16:24:00"
+        }
+      ], 
+      "name": "Uruguay"
+    }, 
+    "id": "300186489"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Bj\u00c3\u00b6rn KUIPERS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Sander VAN ROEKEL"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Erwin ZEINSTRA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Walter LOPEZ"
+      }
+    ], 
+    "away": {
+      "id": "43954", 
+      "goals": [
+        {
+          "player_id": "298664", 
+          "player": "MARCHISIO", 
+          "minute": "35", 
+          "time": "2014-06-14 18:35:00"
+        }, 
+        {
+          "player_id": "301059", 
+          "player": "BALOTELLI", 
+          "minute": "50", 
+          "time": "2014-06-14 19:20:00"
+        }
+      ], 
+      "name": "Italy"
+    }, 
+    "score": [
+      1, 
+      2
+    ], 
+    "stadium": "Arena Amazonia", 
+    "time": "2014-06-14 18:00:00", 
+    "home": {
+      "id": "43942", 
+      "goals": [
+        {
+          "player_id": "306532", 
+          "player": "STURRIDGE", 
+          "minute": "37", 
+          "time": "2014-06-14 18:37:00"
+        }
+      ], 
+      "name": "England"
+    }, 
+    "id": "300186513"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Enrique OSSES"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Carlos ASTROZA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Sergio ROMAN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "ALIOUM"
+      }
+    ], 
+    "away": {
+      "id": "43819", 
+      "goals": [
+        {
+          "player_id": "233500", 
+          "player": "HONDA", 
+          "minute": "16", 
+          "time": "2014-06-14 22:16:00"
+        }
+      ], 
+      "name": "Japan"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Arena Pernambuco", 
+    "time": "2014-06-14 22:00:00", 
+    "home": {
+      "id": "43854", 
+      "goals": [
+        {
+          "player_id": "353118", 
+          "player": "B. WILFRIED", 
+          "minute": "64", 
+          "time": "2014-06-14 23:34:00"
+        }, 
+        {
+          "player_id": "290186", 
+          "player": "GERVINHO", 
+          "minute": "66", 
+          "time": "2014-06-14 23:36:00"
+        }
+      ], 
+      "name": "C\u00c3\u00b4te d'Ivoire"
+    }, 
+    "id": "300186507"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Ravshan IRMATOV"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Abduxamidullo RASULOV"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Bakhadyr KOCHKAROV"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43927", 
+      "goals": [
+        {
+          "player_id": "373400", 
+          "player": "E. VALENCIA", 
+          "minute": "22", 
+          "time": "2014-06-15 13:22:00"
+        }
+      ], 
+      "name": "Ecuador"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-06-15 13:00:00", 
+    "home": {
+      "id": "43971", 
+      "goals": [
+        {
+          "player_id": "356409", 
+          "player": "MEHMEDI", 
+          "minute": "48", 
+          "time": "2014-06-15 14:18:00"
+        }, 
+        {
+          "player_id": "311554", 
+          "player": "SEFEROVIC", 
+          "minute": "90+3", 
+          "time": "2014-06-15 15:03:00"
+        }
+      ], 
+      "name": "Switzerland"
+    }, 
+    "id": "300186494"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Sandro RICCI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Emerson DE CARVALHO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcelo VAN GASSE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Peter O'LEARY"
+      }
+    ], 
+    "away": {
+      "id": "43909", 
+      "goals": [], 
+      "name": "Honduras"
+    }, 
+    "score": [
+      3, 
+      0
+    ], 
+    "stadium": "Estadio Beira-Rio", 
+    "time": "2014-06-15 16:00:00", 
+    "home": {
+      "id": "43946", 
+      "goals": [
+        {
+          "player_id": "297103", 
+          "player": "BENZEMA", 
+          "type": "PEN", 
+          "minute": "45 PEN", 
+          "time": "2014-06-15 16:45:00"
+        }, 
+        {
+          "player_id": "178185", 
+          "player": "VALLADARES", 
+          "minute": "48", 
+          "time": "2014-06-15 17:18:00"
+        }
+      ], 
+      "name": "France"
+    }, 
+    "id": "300186496"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Joel AGUILAR"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "William TORRES"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan ZUMBA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Djamel HAIMOUDI"
+      }
+    ], 
+    "away": {
+      "id": "44037", 
+      "goals": [
+        {
+          "player_id": "300411", 
+          "player": "IBI\u00c5\u00a0EVI\u00c4\u0086", 
+          "minute": "85", 
+          "time": "2014-06-15 20:55:00"
+        }
+      ], 
+      "name": "Bosnia and Herzegovina"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-06-15 19:00:00", 
+    "home": {
+      "id": "43922", 
+      "goals": [
+        {
+          "player_id": "376230", 
+          "player": "KOLA\u00c5\u00a0INAC", 
+          "minute": "3", 
+          "time": "2014-06-15 19:03:00"
+        }, 
+        {
+          "player_id": "229397", 
+          "player": "MESSI", 
+          "minute": "65", 
+          "time": "2014-06-15 20:35:00"
+        }
+      ], 
+      "name": "Argentina"
+    }, 
+    "id": "300186477"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Milorad MAZIC"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Milovan RISTIC"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Dalibor DJURDJEVIC"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "ALIOUM"
+      }
+    ], 
+    "away": {
+      "id": "43963", 
+      "goals": [], 
+      "name": "Portugal"
+    }, 
+    "score": [
+      4, 
+      0
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-06-16 13:00:00", 
+    "home": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "321722", 
+          "player": "M\u00c3\u009cLLER", 
+          "type": "PEN", 
+          "minute": "12 PEN", 
+          "time": "2014-06-16 13:12:00"
+        }, 
+        {
+          "player_id": "311150", 
+          "player": "HUMMELS", 
+          "minute": "32", 
+          "time": "2014-06-16 13:32:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "id": "300186475"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Carlos VERA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Christian LESCANO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Byron ROMERO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Wilmar ROLDAN"
+      }
+    ], 
+    "away": {
+      "id": "43876", 
+      "goals": [], 
+      "name": "Nigeria"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Arena da Baixada", 
+    "time": "2014-06-16 16:00:00", 
+    "home": {
+      "id": "43817", 
+      "goals": [], 
+      "name": "Iran"
+    }, 
+    "id": "300186505"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Jonas ERIKSSON"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mathias KLASENIUS"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Daniel W\u00c3\u0084RNMARK"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43921", 
+      "goals": [
+        {
+          "player_id": "207851", 
+          "player": "DEMPSEY", 
+          "minute": "1", 
+          "time": "2014-06-16 19:01:00"
+        }, 
+        {
+          "player_id": "373555", 
+          "player": "BROOKS", 
+          "minute": "86", 
+          "time": "2014-06-16 20:56:00"
+        }
+      ], 
+      "name": "USA"
+    }, 
+    "score": [
+      1, 
+      2
+    ], 
+    "stadium": "Estadio das Dunas", 
+    "time": "2014-06-16 19:00:00", 
+    "home": {
+      "id": "43860", 
+      "goals": [
+        {
+          "player_id": "294620", 
+          "player": "A. AYEW", 
+          "minute": "82", 
+          "time": "2014-06-16 20:52:00"
+        }
+      ], 
+      "name": "Ghana"
+    }, 
+    "id": "300186512"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Marco RODRIGUEZ"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Marvin TORRENTERA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcos QUINTERO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43843", 
+      "goals": [
+        {
+          "player_id": "319358", 
+          "player": "FEGHOULI", 
+          "type": "PEN", 
+          "minute": "25 PEN", 
+          "time": "2014-06-17 13:25:00"
+        }
+      ], 
+      "name": "Algeria"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-06-17 13:00:00", 
+    "home": {
+      "id": "43935", 
+      "goals": [
+        {
+          "player_id": "290902", 
+          "player": "FELLAINI", 
+          "minute": "70", 
+          "time": "2014-06-17 14:40:00"
+        }, 
+        {
+          "player_id": "358114", 
+          "player": "MERTENS", 
+          "minute": "80", 
+          "time": "2014-06-17 14:50:00"
+        }
+      ], 
+      "name": "Belgium"
+    }, 
+    "id": "300186479"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "C\u00c3\u00bcneyt \u00c3\u0087AKIR"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bahattin DURAN"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Tarik ONGUN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein ODDVAR MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43911", 
+      "goals": [], 
+      "name": "Mexico"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-06-17 16:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [], 
+      "name": "Brazil"
+    }, 
+    "id": "300186509"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nestor PITANA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Hernan MAIDANA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan Pablo BELATTI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Roberto MORENO"
+      }
+    ], 
+    "away": {
+      "id": "43822", 
+      "goals": [
+        {
+          "player_id": "268149", 
+          "player": "K H LEE", 
+          "minute": "68", 
+          "time": "2014-06-17 19:38:00"
+        }
+      ], 
+      "name": "Korea Republic"
+    }, 
+    "score": [
+      1, 
+      1
+    ], 
+    "stadium": "Arena Pantanal", 
+    "time": "2014-06-17 18:00:00", 
+    "home": {
+      "id": "43965", 
+      "goals": [
+        {
+          "player_id": "186808", 
+          "player": "KERZHAKOV", 
+          "minute": "74", 
+          "time": "2014-06-17 19:44:00"
+        }
+      ], 
+      "name": "Russia"
+    }, 
+    "id": "300186499"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Djamel HAIMOUDI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Redouane ACHIK"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Abdelhak ETCHIALI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Bakary GASSAMA"
+      }
+    ], 
+    "away": {
+      "id": "43960", 
+      "goals": [
+        {
+          "player_id": "184616", 
+          "player": "ROBBEN", 
+          "minute": "20", 
+          "time": "2014-06-18 13:20:00"
+        }, 
+        {
+          "player_id": "217315", 
+          "player": "V. PERSIE", 
+          "minute": "58", 
+          "time": "2014-06-18 14:28:00"
+        }, 
+        {
+          "player_id": "336098", 
+          "player": "MEMPHIS", 
+          "minute": "68", 
+          "time": "2014-06-18 14:38:00"
+        }
+      ], 
+      "name": "Netherlands"
+    }, 
+    "score": [
+      2, 
+      3
+    ], 
+    "stadium": "Estadio Beira-Rio", 
+    "time": "2014-06-18 13:00:00", 
+    "home": {
+      "id": "43976", 
+      "goals": [
+        {
+          "player_id": "213001", 
+          "player": "CAHILL", 
+          "minute": "21", 
+          "time": "2014-06-18 13:21:00"
+        }, 
+        {
+          "player_id": "197514", 
+          "player": "JEDINAK", 
+          "type": "PEN", 
+          "minute": "54 PEN", 
+          "time": "2014-06-18 14:24:00"
+        }
+      ], 
+      "name": "Australia"
+    }, 
+    "id": "300186478"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Mark GEIGER"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mark Sean HURD"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Joe FLETCHER"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Nawaf SHUKRALLA"
+      }
+    ], 
+    "away": {
+      "id": "43925", 
+      "goals": [
+        {
+          "player_id": "270301", 
+          "player": "VARGAS", 
+          "minute": "20", 
+          "time": "2014-06-18 16:20:00"
+        }, 
+        {
+          "player_id": "318150", 
+          "player": "CH. AR\u00c3\u0081NGUIZ", 
+          "minute": "43", 
+          "time": "2014-06-18 16:43:00"
+        }
+      ], 
+      "name": "Chile"
+    }, 
+    "score": [
+      0, 
+      2
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-06-18 16:00:00", 
+    "home": {
+      "id": "43969", 
+      "goals": [], 
+      "name": "Spain"
+    }, 
+    "id": "300186498"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Pedro PROEN\u00c3\u0087A"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bertino MIRANDA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Jose TRIGO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Walter LOPEZ"
+      }
+    ], 
+    "away": {
+      "id": "43938", 
+      "goals": [
+        {
+          "player_id": "187258", 
+          "player": "OLI\u00c4\u0086", 
+          "minute": "11", 
+          "time": "2014-06-18 18:11:00"
+        }, 
+        {
+          "player_id": "359381", 
+          "player": "PERI\u00c5\u00a0I\u00c4\u0086", 
+          "minute": "48", 
+          "time": "2014-06-18 19:18:00"
+        }, 
+        {
+          "player_id": "375518", 
+          "player": "MAND\u00c5\u00bdUKI\u00c4\u0086", 
+          "minute": "61", 
+          "time": "2014-06-18 19:31:00"
+        }
+      ], 
+      "name": "Croatia"
+    }, 
+    "score": [
+      0, 
+      4
+    ], 
+    "stadium": "Arena Amazonia", 
+    "time": "2014-06-18 18:00:00", 
+    "home": {
+      "id": "43849", 
+      "goals": [], 
+      "name": "Cameroon"
+    }, 
+    "id": "300186453"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Howard WEBB"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Michael MULLARKEY"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Darren CANN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Victor CARRILLO"
+      }
+    ], 
+    "away": {
+      "id": "43854", 
+      "goals": [
+        {
+          "player_id": "290186", 
+          "player": "GERVINHO", 
+          "minute": "73", 
+          "time": "2014-06-19 14:43:00"
+        }
+      ], 
+      "name": "C\u00c3\u00b4te d'Ivoire"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-06-19 13:00:00", 
+    "home": {
+      "id": "43926", 
+      "goals": [
+        {
+          "player_id": "269058", 
+          "player": "JAMES", 
+          "minute": "64", 
+          "time": "2014-06-19 14:34:00"
+        }, 
+        {
+          "player_id": "356704", 
+          "player": "QUINTERO", 
+          "minute": "70", 
+          "time": "2014-06-19 14:40:00"
+        }
+      ], 
+      "name": "Colombia"
+    }, 
+    "id": "300186468"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Carlos VELASCO CARBALLO"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Roberto ALONSO FERNANDEZ"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan YUSTE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43942", 
+      "goals": [
+        {
+          "player_id": "196842", 
+          "player": "ROONEY", 
+          "minute": "75", 
+          "time": "2014-06-19 17:45:00"
+        }
+      ], 
+      "name": "England"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-06-19 16:00:00", 
+    "home": {
+      "id": "43930", 
+      "goals": [
+        {
+          "player_id": "270775", 
+          "player": "L. SUAREZ", 
+          "minute": "39", 
+          "time": "2014-06-19 16:39:00"
+        }
+      ], 
+      "name": "Uruguay"
+    }, 
+    "id": "300186486"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Joel AGUILAR"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "William TORRES"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan ZUMBA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43949", 
+      "goals": [], 
+      "name": "Greece"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Estadio das Dunas", 
+    "time": "2014-06-19 19:00:00", 
+    "home": {
+      "id": "43819", 
+      "goals": [], 
+      "name": "Japan"
+    }, 
+    "id": "300186454"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Enrique OSSES"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Carlos ASTROZA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Sergio ROMAN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "ALIOUM"
+      }
+    ], 
+    "away": {
+      "id": "43901", 
+      "goals": [
+        {
+          "player_id": "214876", 
+          "player": "RUIZ B.", 
+          "minute": "44", 
+          "time": "2014-06-20 13:44:00"
+        }
+      ], 
+      "name": "Costa Rica"
+    }, 
+    "score": [
+      0, 
+      1
+    ], 
+    "stadium": "Arena Pernambuco", 
+    "time": "2014-06-20 13:00:00", 
+    "home": {
+      "id": "43954", 
+      "goals": [], 
+      "name": "Italy"
+    }, 
+    "id": "300186500"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Bjorn KUIPERS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Sander VAN ROEKEL"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Erwin ZEINSTRA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43946", 
+      "goals": [
+        {
+          "player_id": "358015", 
+          "player": "GIROUD", 
+          "minute": "17", 
+          "time": "2014-06-20 16:17:00"
+        }, 
+        {
+          "player_id": "358014", 
+          "player": "MATUIDI", 
+          "minute": "18", 
+          "time": "2014-06-20 16:18:00"
+        }, 
+        {
+          "player_id": "297106", 
+          "player": "VALBUENA", 
+          "minute": "40", 
+          "time": "2014-06-20 16:40:00"
+        }, 
+        {
+          "player_id": "297103", 
+          "player": "BENZEMA", 
+          "minute": "67", 
+          "time": "2014-06-20 17:37:00"
+        }, 
+        {
+          "player_id": "317056", 
+          "player": "SISSOKO", 
+          "minute": "73", 
+          "time": "2014-06-20 17:43:00"
+        }
+      ], 
+      "name": "France"
+    }, 
+    "score": [
+      2, 
+      5
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-06-20 16:00:00", 
+    "home": {
+      "id": "43971", 
+      "goals": [
+        {
+          "player_id": "216646", 
+          "player": "DZEMAILI", 
+          "minute": "81", 
+          "time": "2014-06-20 17:51:00"
+        }, 
+        {
+          "player_id": "311558", 
+          "player": "XHAKA", 
+          "minute": "87", 
+          "time": "2014-06-20 17:57:00"
+        }
+      ], 
+      "name": "Switzerland"
+    }, 
+    "id": "300186514"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Benjamin WILLIAMS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Matthew CREAM"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Hakan ANAZ"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Yuichi NISHIMURA"
+      }
+    ], 
+    "away": {
+      "id": "43927", 
+      "goals": [
+        {
+          "player_id": "373400", 
+          "player": "E. VALENCIA", 
+          "minute": "34", 
+          "time": "2014-06-20 19:34:00"
+        }
+      ], 
+      "name": "Ecuador"
+    }, 
+    "score": [
+      1, 
+      2
+    ], 
+    "stadium": "Arena da Baixada", 
+    "time": "2014-06-20 19:00:00", 
+    "home": {
+      "id": "43909", 
+      "goals": [
+        {
+          "player_id": "271414", 
+          "player": "COSTLY", 
+          "minute": "31", 
+          "time": "2014-06-20 19:31:00"
+        }
+      ], 
+      "name": "Honduras"
+    }, 
+    "id": "300186463"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Milorad MAZIC"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Milovan RISTIC"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Dalibor DJURDJEVIC"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43817", 
+      "goals": [], 
+      "name": "Iran"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-06-21 13:00:00", 
+    "home": {
+      "id": "43922", 
+      "goals": [
+        {
+          "player_id": "229397", 
+          "player": "MESSI", 
+          "minute": "90+1", 
+          "time": "2014-06-21 15:01:00"
+        }
+      ], 
+      "name": "Argentina"
+    }, 
+    "id": "300186466"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Sandro RICCI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Emerson DE CARVALHO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcelo VAN GASSE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Victor CARRILLO"
+      }
+    ], 
+    "away": {
+      "id": "43860", 
+      "goals": [
+        {
+          "player_id": "294620", 
+          "player": "A. AYEW", 
+          "minute": "54", 
+          "time": "2014-06-21 17:24:00"
+        }, 
+        {
+          "player_id": "208353", 
+          "player": "A. GYAN", 
+          "minute": "63", 
+          "time": "2014-06-21 17:33:00"
+        }
+      ], 
+      "name": "Ghana"
+    }, 
+    "score": [
+      2, 
+      2
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-06-21 16:00:00", 
+    "home": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "309316", 
+          "player": "G\u00c3\u0096TZE", 
+          "minute": "51", 
+          "time": "2014-06-21 17:21:00"
+        }, 
+        {
+          "player_id": "182206", 
+          "player": "KLOSE", 
+          "minute": "71", 
+          "time": "2014-06-21 17:41:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "id": "300186493"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Peter O LEARY"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Jan Hendrik HINTZ"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Mark RULE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Roberto MORENO"
+      }
+    ], 
+    "away": {
+      "id": "44037", 
+      "goals": [], 
+      "name": "Bosnia and Herzegovina"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Arena Pantanal", 
+    "time": "2014-06-21 18:00:00", 
+    "home": {
+      "id": "43876", 
+      "goals": [
+        {
+          "player_id": "214228", 
+          "player": "ODEMWINGIE", 
+          "minute": "29", 
+          "time": "2014-06-21 18:29:00"
+        }
+      ], 
+      "name": "Nigeria"
+    }, 
+    "id": "300186511"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Felix BRYCH"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mark BORSCH"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Stefan LUPP"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Carlos VERA"
+      }
+    ], 
+    "away": {
+      "id": "43965", 
+      "goals": [], 
+      "name": "Russia"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-06-22 13:00:00", 
+    "home": {
+      "id": "43935", 
+      "goals": [
+        {
+          "player_id": "379911", 
+          "player": "ORIGI", 
+          "minute": "88", 
+          "time": "2014-06-22 14:58:00"
+        }
+      ], 
+      "name": "Belgium"
+    }, 
+    "id": "300186481"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Wilmar ROLDAN"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Eduardo DIAZ"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Christian LESCANO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43843", 
+      "goals": [
+        {
+          "player_id": "354859", 
+          "player": "SLIMANI", 
+          "minute": "26", 
+          "time": "2014-06-22 16:26:00"
+        }, 
+        {
+          "player_id": "296827", 
+          "player": "HALLICHE", 
+          "minute": "28", 
+          "time": "2014-06-22 16:28:00"
+        }, 
+        {
+          "player_id": "354875", 
+          "player": "DJABOU", 
+          "minute": "38", 
+          "time": "2014-06-22 16:38:00"
+        }, 
+        {
+          "player_id": "366309", 
+          "player": "BRAHIMI", 
+          "minute": "62", 
+          "time": "2014-06-22 17:32:00"
+        }
+      ], 
+      "name": "Algeria"
+    }, 
+    "score": [
+      2, 
+      4
+    ], 
+    "stadium": "Estadio Beira-Rio", 
+    "time": "2014-06-22 16:00:00", 
+    "home": {
+      "id": "43822", 
+      "goals": [
+        {
+          "player_id": "307849", 
+          "player": "H M SON", 
+          "minute": "50", 
+          "time": "2014-06-22 17:20:00"
+        }, 
+        {
+          "player_id": "291393", 
+          "player": "J C KOO", 
+          "minute": "72", 
+          "time": "2014-06-22 17:42:00"
+        }
+      ], 
+      "name": "Korea Republic"
+    }, 
+    "id": "300186495"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nestor PITANA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Hernan MAIDANA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan Pablo BELATTI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Walter LOPEZ"
+      }
+    ], 
+    "away": {
+      "id": "43963", 
+      "goals": [
+        {
+          "player_id": "254167", 
+          "player": "NANI", 
+          "minute": "5", 
+          "time": "2014-06-22 18:05:00"
+        }, 
+        {
+          "player_id": "254166", 
+          "player": "VARELA", 
+          "minute": "90+5", 
+          "time": "2014-06-22 20:05:00"
+        }
+      ], 
+      "name": "Portugal"
+    }, 
+    "score": [
+      2, 
+      2
+    ], 
+    "stadium": "Arena Amazonia", 
+    "time": "2014-06-22 18:00:00", 
+    "home": {
+      "id": "43921", 
+      "goals": [
+        {
+          "player_id": "183893", 
+          "player": "JONES", 
+          "minute": "64", 
+          "time": "2014-06-22 19:34:00"
+        }, 
+        {
+          "player_id": "207851", 
+          "player": "DEMPSEY", 
+          "minute": "81", 
+          "time": "2014-06-22 19:51:00"
+        }
+      ], 
+      "name": "USA"
+    }, 
+    "id": "300186483"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Bakary GASSAMA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Evarist MENKOUANDE"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Felicien KABANDA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Joel AGUILAR"
+      }
+    ], 
+    "away": {
+      "id": "43925", 
+      "goals": [], 
+      "name": "Chile"
+    }, 
+    "score": [
+      2, 
+      0
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-06-23 13:00:00", 
+    "home": {
+      "id": "43960", 
+      "goals": [
+        {
+          "player_id": "319436", 
+          "player": "FER", 
+          "minute": "77", 
+          "time": "2014-06-23 14:47:00"
+        }, 
+        {
+          "player_id": "336098", 
+          "player": "MEMPHIS", 
+          "minute": "90+2", 
+          "time": "2014-06-23 15:02:00"
+        }
+      ], 
+      "name": "Netherlands"
+    }, 
+    "id": "300186470"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nawaf SHUKRALLA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Yaser TULEFAT"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Ebrahim SALEH"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43969", 
+      "goals": [
+        {
+          "player_id": "229884", 
+          "player": "DAVID VILLA", 
+          "minute": "36", 
+          "time": "2014-06-23 13:36:00"
+        }, 
+        {
+          "player_id": "183864", 
+          "player": "TORRES", 
+          "minute": "69", 
+          "time": "2014-06-23 14:39:00"
+        }, 
+        {
+          "player_id": "267811", 
+          "player": "MATA", 
+          "minute": "82", 
+          "time": "2014-06-23 14:52:00"
+        }
+      ], 
+      "name": "Spain"
+    }, 
+    "score": [
+      0, 
+      3
+    ], 
+    "stadium": "Arena da Baixada", 
+    "time": "2014-06-23 13:00:00", 
+    "home": {
+      "id": "43976", 
+      "goals": [], 
+      "name": "Australia"
+    }, 
+    "id": "300186467"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Jonas ERIKSSON"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mathias KLASENIUS"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Daniel W\u00c3\u0084RNMARK"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein ODDVAR MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43924", 
+      "goals": [
+        {
+          "player_id": "314197", 
+          "player": "NEYMAR JR", 
+          "minute": "17", 
+          "time": "2014-06-23 17:17:00"
+        }, 
+        {
+          "player_id": "233952", 
+          "player": "FRED", 
+          "minute": "49", 
+          "time": "2014-06-23 18:19:00"
+        }, 
+        {
+          "player_id": "208016", 
+          "player": "FERNANDINHO", 
+          "minute": "84", 
+          "time": "2014-06-23 18:54:00"
+        }
+      ], 
+      "name": "Brazil"
+    }, 
+    "score": [
+      1, 
+      4
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-06-23 17:00:00", 
+    "home": {
+      "id": "43849", 
+      "goals": [
+        {
+          "player_id": "320375", 
+          "player": "MATIP", 
+          "minute": "26", 
+          "time": "2014-06-23 17:26:00"
+        }
+      ], 
+      "name": "Cameroon"
+    }, 
+    "id": "300186472"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Ravshan IRMATOV"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Abduxamidullo RASULOV"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Bakhadyr KOCHKAROV"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "ALIOUM"
+      }
+    ], 
+    "away": {
+      "id": "43911", 
+      "goals": [
+        {
+          "player_id": "178119", 
+          "player": "R. MARQUEZ", 
+          "minute": "72", 
+          "time": "2014-06-23 18:42:00"
+        }, 
+        {
+          "player_id": "251352", 
+          "player": "A. GUARDADO", 
+          "minute": "75", 
+          "time": "2014-06-23 18:45:00"
+        }, 
+        {
+          "player_id": "228599", 
+          "player": "J. HERNANDEZ", 
+          "minute": "82", 
+          "time": "2014-06-23 18:52:00"
+        }
+      ], 
+      "name": "Mexico"
+    }, 
+    "score": [
+      1, 
+      3
+    ], 
+    "stadium": "Arena Pernambuco", 
+    "time": "2014-06-23 17:00:00", 
+    "home": {
+      "id": "43938", 
+      "goals": [
+        {
+          "player_id": "359381", 
+          "player": "PERI\u00c5\u00a0I\u00c4\u0086", 
+          "minute": "87", 
+          "time": "2014-06-23 18:57:00"
+        }
+      ], 
+      "name": "Croatia"
+    }, 
+    "id": "300186452"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Marco RODRIGUEZ"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Marvin TORRENTERA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcos QUINTERO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Mark GEIGER"
+      }
+    ], 
+    "away": {
+      "id": "43930", 
+      "goals": [
+        {
+          "player_id": "229499", 
+          "player": "D. GODIN", 
+          "minute": "81", 
+          "time": "2014-06-24 14:51:00"
+        }
+      ], 
+      "name": "Uruguay"
+    }, 
+    "score": [
+      0, 
+      1
+    ], 
+    "stadium": "Estadio das Dunas", 
+    "time": "2014-06-24 13:00:00", 
+    "home": {
+      "id": "43954", 
+      "goals": [], 
+      "name": "Italy"
+    }, 
+    "id": "300186465"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Djamel HAIMOUDI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Redouane ACHIK"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Abdelhak ETCHIALI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43942", 
+      "goals": [], 
+      "name": "England"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-06-24 13:00:00", 
+    "home": {
+      "id": "43901", 
+      "goals": [], 
+      "name": "Costa Rica"
+    }, 
+    "id": "300186484"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Pedro PROENCA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bertino MIRANDA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Jose TRIGO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Roberto MORENO"
+      }
+    ], 
+    "away": {
+      "id": "43926", 
+      "goals": [
+        {
+          "player_id": "309714", 
+          "player": "CUADRADO", 
+          "type": "PEN", 
+          "minute": "17 PEN", 
+          "time": "2014-06-24 16:17:00"
+        }, 
+        {
+          "player_id": "313832", 
+          "player": "JACKSON M.", 
+          "minute": "55", 
+          "time": "2014-06-24 17:25:00"
+        }, 
+        {
+          "player_id": "269058", 
+          "player": "JAMES", 
+          "minute": "90", 
+          "time": "2014-06-24 18:00:00"
+        }
+      ], 
+      "name": "Colombia"
+    }, 
+    "score": [
+      1, 
+      4
+    ], 
+    "stadium": "Arena Pantanal", 
+    "time": "2014-06-24 16:00:00", 
+    "home": {
+      "id": "43819", 
+      "goals": [
+        {
+          "player_id": "286278", 
+          "player": "OKAZAKI", 
+          "minute": "45+1", 
+          "time": "2014-06-24 16:46:00"
+        }
+      ], 
+      "name": "Japan"
+    }, 
+    "id": "300186457"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Carlos VERA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Christian LESCANO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Byron ROMERO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Sandro RICCI"
+      }
+    ], 
+    "away": {
+      "id": "43854", 
+      "goals": [
+        {
+          "player_id": "353118", 
+          "player": "B. WILFRIED", 
+          "minute": "74", 
+          "time": "2014-06-24 18:44:00"
+        }
+      ], 
+      "name": "C\u00c3\u00b4te d'Ivoire"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-06-24 17:00:00", 
+    "home": {
+      "id": "43949", 
+      "goals": [
+        {
+          "player_id": "362649", 
+          "player": "SAMARIS", 
+          "minute": "42", 
+          "time": "2014-06-24 17:42:00"
+        }, 
+        {
+          "player_id": "297112", 
+          "player": "SAMARAS", 
+          "type": "PEN", 
+          "minute": "90+3 PEN", 
+          "time": "2014-06-24 19:03:00"
+        }
+      ], 
+      "name": "Greece"
+    }, 
+    "id": "300186455"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nicola RIZZOLI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Renato FAVERANI"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Andrea STEFANI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43922", 
+      "goals": [
+        {
+          "player_id": "229397", 
+          "player": "MESSI", 
+          "minute": "3", 
+          "time": "2014-06-25 13:03:00"
+        }, 
+        {
+          "player_id": "318688", 
+          "player": "ROJO", 
+          "minute": "50", 
+          "time": "2014-06-25 14:20:00"
+        }
+      ], 
+      "name": "Argentina"
+    }, 
+    "score": [
+      2, 
+      3
+    ], 
+    "stadium": "Estadio Beira-Rio", 
+    "time": "2014-06-25 13:00:00", 
+    "home": {
+      "id": "43876", 
+      "goals": [
+        {
+          "player_id": "344714", 
+          "player": "MUSA", 
+          "minute": "4", 
+          "time": "2014-06-25 13:04:00"
+        }
+      ], 
+      "name": "Nigeria"
+    }, 
+    "id": "300186458"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Carlos VELASCO CARBALLO"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Roberto ALONSO FERNANDEZ"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan YUSTE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Enrique OSSES"
+      }
+    ], 
+    "away": {
+      "id": "43817", 
+      "goals": [
+        {
+          "player_id": "362641", 
+          "player": "REZA", 
+          "minute": "82", 
+          "time": "2014-06-25 14:52:00"
+        }
+      ], 
+      "name": "Iran"
+    }, 
+    "score": [
+      3, 
+      1
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-06-25 13:00:00", 
+    "home": {
+      "id": "44037", 
+      "goals": [
+        {
+          "player_id": "300409", 
+          "player": "D\u00c5\u00bdEKO", 
+          "minute": "23", 
+          "time": "2014-06-25 13:23:00"
+        }, 
+        {
+          "player_id": "299198", 
+          "player": "PJANI\u00c4\u0086", 
+          "minute": "59", 
+          "time": "2014-06-25 14:29:00"
+        }, 
+        {
+          "player_id": "359997", 
+          "player": "VR\u00c5\u00a0AJEVI\u00c4\u0086", 
+          "minute": "83", 
+          "time": "2014-06-25 14:53:00"
+        }
+      ], 
+      "name": "Bosnia and Herzegovina"
+    }, 
+    "id": "300186464"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "N\u00c3\u00a9stor PITANA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Hernan MAIDANA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan Pablo BELATTI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Milorad MAZIC"
+      }
+    ], 
+    "away": {
+      "id": "43971", 
+      "goals": [
+        {
+          "player_id": "321653", 
+          "player": "SHAQIRI", 
+          "minute": "31", 
+          "time": "2014-06-25 16:31:00"
+        }
+      ], 
+      "name": "Switzerland"
+    }, 
+    "score": [
+      0, 
+      3
+    ], 
+    "stadium": "Arena Amazonia", 
+    "time": "2014-06-25 16:00:00", 
+    "home": {
+      "id": "43909", 
+      "goals": [], 
+      "name": "Honduras"
+    }, 
+    "id": "300186482"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Noumandiez DOUE"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Songuifolo YEO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Jean Claude BIRUMUSHAHU"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Bj\u00c3\u00b6rn KUIPERS"
+      }
+    ], 
+    "away": {
+      "id": "43946", 
+      "goals": [], 
+      "name": "France"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-06-25 17:00:00", 
+    "home": {
+      "id": "43927", 
+      "goals": [], 
+      "name": "Ecuador"
+    }, 
+    "id": "300186515"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nawaf SHUKRALLA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Yaser TULEFAT"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Ebrahim SALEH"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Wilmar ROLD\u00c3\u0081N"
+      }
+    ], 
+    "away": {
+      "id": "43860", 
+      "goals": [
+        {
+          "player_id": "208353", 
+          "player": "A. GYAN", 
+          "minute": "57", 
+          "time": "2014-06-26 14:27:00"
+        }
+      ], 
+      "name": "Ghana"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-06-26 13:00:00", 
+    "home": {
+      "id": "43963", 
+      "goals": [
+        {
+          "player_id": "298582", 
+          "player": "BOYE", 
+          "minute": "31", 
+          "time": "2014-06-26 13:31:00"
+        }, 
+        {
+          "player_id": "201200", 
+          "player": "RONALDO", 
+          "minute": "80", 
+          "time": "2014-06-26 14:50:00"
+        }
+      ], 
+      "name": "Portugal"
+    }, 
+    "id": "300186476"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Ravshan IRMATOV"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Abduxamidullo RASULOV"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Bakhadyr KOCHKAROV"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "ALIOUM"
+      }
+    ], 
+    "away": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "321722", 
+          "player": "M\u00c3\u009cLLER", 
+          "minute": "55", 
+          "time": "2014-06-26 14:25:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "score": [
+      0, 
+      1
+    ], 
+    "stadium": "Arena Pernambuco", 
+    "time": "2014-06-26 13:00:00", 
+    "home": {
+      "id": "43921", 
+      "goals": [], 
+      "name": "USA"
+    }, 
+    "id": "300186469"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Benjamin WILLIAMS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Matthew CREAM"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Hakan ANAZ"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Victor CARRILLO"
+      }
+    ], 
+    "away": {
+      "id": "43935", 
+      "goals": [
+        {
+          "player_id": "290904", 
+          "player": "VERTONGHEN", 
+          "minute": "78", 
+          "time": "2014-06-26 18:48:00"
+        }
+      ], 
+      "name": "Belgium"
+    }, 
+    "score": [
+      0, 
+      1
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-06-26 17:00:00", 
+    "home": {
+      "id": "43822", 
+      "goals": [], 
+      "name": "Korea Republic"
+    }, 
+    "id": "300186480"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Cuneyt CAKIR"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bahattin DURAN"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Tarik ONGUN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Joel AGUILAR"
+      }
+    ], 
+    "away": {
+      "id": "43965", 
+      "goals": [
+        {
+          "player_id": "358048", 
+          "player": "KOKORIN", 
+          "minute": "6", 
+          "time": "2014-06-26 17:06:00"
+        }
+      ], 
+      "name": "Russia"
+    }, 
+    "score": [
+      1, 
+      1
+    ], 
+    "stadium": "Arena da Baixada", 
+    "time": "2014-06-26 17:00:00", 
+    "home": {
+      "id": "43843", 
+      "goals": [
+        {
+          "player_id": "354859", 
+          "player": "SLIMANI", 
+          "minute": "60", 
+          "time": "2014-06-26 18:30:00"
+        }
+      ], 
+      "name": "Algeria"
+    }, 
+    "id": "300186506"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Howard WEBB"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Michael MULLARKEY"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Darren CANN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Dr. FELIX BRYCH"
+      }
+    ], 
+    "away": {
+      "id": "43925", 
+      "goals": [
+        {
+          "player_id": "228627", 
+          "player": "ALEXIS", 
+          "minute": "32", 
+          "time": "2014-06-28 13:32:00"
+        }
+      ], 
+      "name": "Chile"
+    }, 
+    "score": [
+      1, 
+      1
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-06-28 13:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [
+        {
+          "player_id": "271043", 
+          "player": "DAVID LUIZ", 
+          "minute": "18", 
+          "time": "2014-06-28 13:18:00"
+        }
+      ], 
+      "name": "Brazil"
+    }, 
+    "id": "300186487"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Bjorn KUIPERS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Sander VAN ROEKEL"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Erwin ZEINSTRA"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43930", 
+      "goals": [], 
+      "name": "Uruguay"
+    }, 
+    "score": [
+      2, 
+      0
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-06-28 17:00:00", 
+    "home": {
+      "id": "43926", 
+      "goals": [
+        {
+          "player_id": "269058", 
+          "player": "JAMES", 
+          "minute": "28", 
+          "time": "2014-06-28 17:28:00"
+        }
+      ], 
+      "name": "Colombia"
+    }, 
+    "id": "300186491"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Pedro PROENCA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bertino MIRANDA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Jose TRIGO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Carlos VERA"
+      }
+    ], 
+    "away": {
+      "id": "43911", 
+      "goals": [
+        {
+          "player_id": "234551", 
+          "player": "G. DOS SANTOS", 
+          "minute": "48", 
+          "time": "2014-06-29 14:18:00"
+        }
+      ], 
+      "name": "Mexico"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-06-29 13:00:00", 
+    "home": {
+      "id": "43960", 
+      "goals": [
+        {
+          "player_id": "215002", 
+          "player": "SNEIJDER", 
+          "minute": "88", 
+          "time": "2014-06-29 14:58:00"
+        }, 
+        {
+          "player_id": "184615", 
+          "player": "HUNTELAAR", 
+          "type": "PEN", 
+          "minute": "90+4 PEN", 
+          "time": "2014-06-29 15:04:00"
+        }
+      ], 
+      "name": "Netherlands"
+    }, 
+    "id": "300186508"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Benjamin WILLIAMS"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Matthew CREAM"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Hakan ANAZ"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Nawaf SHUKRALLA"
+      }
+    ], 
+    "away": {
+      "id": "43949", 
+      "goals": [
+        {
+          "player_id": "299090", 
+          "player": "SOKRATIS", 
+          "minute": "90+1", 
+          "time": "2014-06-29 19:01:00"
+        }
+      ], 
+      "name": "Greece"
+    }, 
+    "score": [
+      1, 
+      1
+    ], 
+    "stadium": "Arena Pernambuco", 
+    "time": "2014-06-29 17:00:00", 
+    "home": {
+      "id": "43901", 
+      "goals": [
+        {
+          "player_id": "214876", 
+          "player": "RUIZ B.", 
+          "minute": "52", 
+          "time": "2014-06-29 18:22:00"
+        }
+      ], 
+      "name": "Costa Rica"
+    }, 
+    "id": "300186459"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Mark GEIGER"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mark Sean HURD"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Joe FLETCHER"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Alireza FAGHANI"
+      }
+    ], 
+    "away": {
+      "id": "43876", 
+      "goals": [], 
+      "name": "Nigeria"
+    }, 
+    "score": [
+      2, 
+      0
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-06-30 13:00:00", 
+    "home": {
+      "id": "43946", 
+      "goals": [
+        {
+          "player_id": "367388", 
+          "player": "POGBA", 
+          "minute": "79", 
+          "time": "2014-06-30 14:49:00"
+        }, 
+        {
+          "player_id": "178403", 
+          "player": "YOBO", 
+          "minute": "90+2", 
+          "time": "2014-06-30 15:02:00"
+        }
+      ], 
+      "name": "France"
+    }, 
+    "id": "300186462"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Sandro RICCI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Emerson DE CARVALHO"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcelo VAN GASSE"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Walter LOPEZ"
+      }
+    ], 
+    "away": {
+      "id": "43843", 
+      "goals": [
+        {
+          "player_id": "354875", 
+          "player": "DJABOU", 
+          "minute": "120+1", 
+          "time": "2014-06-30 19:31:00"
+        }
+      ], 
+      "name": "Algeria"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Beira-Rio", 
+    "time": "2014-06-30 17:00:00", 
+    "home": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "306548", 
+          "player": "SCH\u00c3\u009cRRLE", 
+          "minute": "92", 
+          "time": "2014-06-30 19:02:00"
+        }, 
+        {
+          "player_id": "305036", 
+          "player": "\u00c3\u0096ZIL", 
+          "minute": "120", 
+          "time": "2014-06-30 19:30:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "id": "300186460"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Jonas ERIKSSON"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Mathias KLASENIUS"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Daniel WARNMARK"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein Oddvar MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43971", 
+      "goals": [], 
+      "name": "Switzerland"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-07-01 13:00:00", 
+    "home": {
+      "id": "43922", 
+      "goals": [
+        {
+          "player_id": "266800", 
+          "player": "DI MARIA", 
+          "minute": "118", 
+          "time": "2014-07-01 15:28:00"
+        }
+      ], 
+      "name": "Argentina"
+    }, 
+    "id": "300186503"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Djamel HAIMOUDI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Redouane ACHIK"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Abdelhak ETCHIALI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Norbert HAUATA"
+      }
+    ], 
+    "away": {
+      "id": "43921", 
+      "goals": [
+        {
+          "player_id": "369094", 
+          "player": "GREEN", 
+          "minute": "107", 
+          "time": "2014-07-01 19:17:00"
+        }
+      ], 
+      "name": "USA"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-07-01 17:00:00", 
+    "home": {
+      "id": "43935", 
+      "goals": [
+        {
+          "player_id": "358120", 
+          "player": "DE BRUYNE", 
+          "minute": "93", 
+          "time": "2014-07-01 19:03:00"
+        }, 
+        {
+          "player_id": "358112", 
+          "player": "LUKAKU", 
+          "minute": "105", 
+          "time": "2014-07-01 19:15:00"
+        }
+      ], 
+      "name": "Belgium"
+    }, 
+    "id": "300186497"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "N\u00c3\u00a9stor PITANA"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Hernan MAIDANA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan Pablo BELATTI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Jonas ERIKSSON"
+      }
+    ], 
+    "away": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "311150", 
+          "player": "HUMMELS", 
+          "minute": "13", 
+          "time": "2014-07-04 13:13:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "score": [
+      0, 
+      1
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-07-04 13:00:00", 
+    "home": {
+      "id": "43946", 
+      "goals": [], 
+      "name": "France"
+    }, 
+    "id": "300186485"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Carlos VELASCO CARBALLO"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Roberto ALONSO FERNANDEZ"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Juan CARLOS YUSTE JIMENEZ"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Svein ODDVAR MOEN"
+      }
+    ], 
+    "away": {
+      "id": "43926", 
+      "goals": [
+        {
+          "player_id": "269058", 
+          "player": "JAMES", 
+          "type": "PEN", 
+          "minute": "80 PEN", 
+          "time": "2014-07-04 18:50:00"
+        }
+      ], 
+      "name": "Colombia"
+    }, 
+    "score": [
+      2, 
+      1
+    ], 
+    "stadium": "Estadio Castelao", 
+    "time": "2014-07-04 17:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [
+        {
+          "player_id": "289964", 
+          "player": "T SILVA", 
+          "minute": "7", 
+          "time": "2014-07-04 17:07:00"
+        }, 
+        {
+          "player_id": "271043", 
+          "player": "DAVID LUIZ", 
+          "minute": "69", 
+          "time": "2014-07-04 18:39:00"
+        }
+      ], 
+      "name": "Brazil"
+    }, 
+    "id": "300186461"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nicola RIZZOLI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Renato FAVERANI"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Andrea STEFANI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Benjamin WILLIAMS"
+      }
+    ], 
+    "away": {
+      "id": "43935", 
+      "goals": [], 
+      "name": "Belgium"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-07-05 13:00:00", 
+    "home": {
+      "id": "43922", 
+      "goals": [
+        {
+          "player_id": "271550", 
+          "player": "HIGUAIN", 
+          "minute": "8", 
+          "time": "2014-07-05 13:08:00"
+        }
+      ], 
+      "name": "Argentina"
+    }, 
+    "id": "300186504"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Ravshan IRMATOV"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Abduxamidullo RASULOV"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Bakhadyr KOCHKAROV"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Noumandiez DOUE"
+      }
+    ], 
+    "away": {
+      "id": "43901", 
+      "goals": [], 
+      "name": "Costa Rica"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Arena Fonte Nova", 
+    "time": "2014-07-05 17:00:00", 
+    "home": {
+      "id": "43960", 
+      "goals": [], 
+      "name": "Netherlands"
+    }, 
+    "id": "300186488"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Marco RODRIGUEZ"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Marvin TORRENTERA"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Marcos QUINTERO"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Mark GEIGER"
+      }
+    ], 
+    "away": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "321722", 
+          "player": "M\u00c3\u009cLLER", 
+          "minute": "11", 
+          "time": "2014-07-08 17:11:00"
+        }, 
+        {
+          "player_id": "182206", 
+          "player": "KLOSE", 
+          "minute": "23", 
+          "time": "2014-07-08 17:23:00"
+        }, 
+        {
+          "player_id": "275162", 
+          "player": "KROOS", 
+          "minute": "24", 
+          "time": "2014-07-08 17:24:00"
+        }, 
+        {
+          "player_id": "196900", 
+          "player": "KHEDIRA", 
+          "minute": "29", 
+          "time": "2014-07-08 17:29:00"
+        }, 
+        {
+          "player_id": "306548", 
+          "player": "SCH\u00c3\u009cRRLE", 
+          "minute": "69", 
+          "time": "2014-07-08 18:39:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "score": [
+      1, 
+      7
+    ], 
+    "stadium": "Estadio Mineirao", 
+    "time": "2014-07-08 17:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [
+        {
+          "player_id": "312868", 
+          "player": "OSCAR", 
+          "minute": "90", 
+          "time": "2014-07-08 19:00:00"
+        }
+      ], 
+      "name": "Brazil"
+    }, 
+    "id": "300186474"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Cuneyt CAKIR"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Bahattin DURAN"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Tarik ONGUN"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Jonas ERIKSSON"
+      }
+    ], 
+    "away": {
+      "id": "43922", 
+      "goals": [], 
+      "name": "Argentina"
+    }, 
+    "score": [
+      0, 
+      0
+    ], 
+    "stadium": "Arena de Sao Paulo", 
+    "time": "2014-07-09 17:00:00", 
+    "home": {
+      "id": "43960", 
+      "goals": [], 
+      "name": "Netherlands"
+    }, 
+    "id": "300186490"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Djamel HAIMOUDI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Redouane ACHIK"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Abdelhak ETCHIALI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Yuichi NISHIMURA"
+      }
+    ], 
+    "away": {
+      "id": "43960", 
+      "goals": [
+        {
+          "player_id": "217315", 
+          "player": "V. PERSIE", 
+          "type": "PEN", 
+          "minute": "3 PEN", 
+          "time": "2014-07-12 17:03:00"
+        }, 
+        {
+          "player_id": "319432", 
+          "player": "BLIND", 
+          "minute": "17", 
+          "time": "2014-07-12 17:17:00"
+        }, 
+        {
+          "player_id": "319438", 
+          "player": "WIJNALDUM", 
+          "minute": "90+1", 
+          "time": "2014-07-12 19:01:00"
+        }
+      ], 
+      "name": "Netherlands"
+    }, 
+    "score": [
+      0, 
+      3
+    ], 
+    "stadium": "Estadio Nacional", 
+    "time": "2014-07-12 17:00:00", 
+    "home": {
+      "id": "43924", 
+      "goals": [], 
+      "name": "Brazil"
+    }, 
+    "id": "300186502"
+  }, 
+  {
+    "officials": [
+      {
+        "role": "Referee", 
+        "name": "Nicola RIZZOLI"
+      }, 
+      {
+        "role": "Assistant Referee 1", 
+        "name": "Renato FAVERANI"
+      }, 
+      {
+        "role": "Assistant Referee 2", 
+        "name": "Andrea STEFANI"
+      }, 
+      {
+        "role": "Fourth official", 
+        "name": "Carlos VERA"
+      }
+    ], 
+    "away": {
+      "id": "43922", 
+      "goals": [], 
+      "name": "Argentina"
+    }, 
+    "score": [
+      1, 
+      0
+    ], 
+    "stadium": "Estadio do Maracana", 
+    "time": "2014-07-13 16:00:00", 
+    "home": {
+      "id": "43948", 
+      "goals": [
+        {
+          "player_id": "309316", 
+          "player": "G\u00c3\u0096TZE", 
+          "minute": "113", 
+          "time": "2014-07-13 18:23:00"
+        }
+      ], 
+      "name": "Germany"
+    }, 
+    "id": "300186501"
+  }
+]

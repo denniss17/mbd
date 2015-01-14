@@ -19,6 +19,10 @@ import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
 public class TweetJsonParseBolt extends BaseBasicBolt {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1605773792988518130L;
 	private static Logger logger = Logger.getLogger(TweetJsonParseBolt.class
 			.getName());
 	private transient JSONParser parser;
