@@ -53,6 +53,8 @@ public class CountGoalBolt extends BaseBasicBolt {
 				);
 				collector.emit(v);				
 			}
+			
+			counter.clear();
 		} 
 		else 
 		{
