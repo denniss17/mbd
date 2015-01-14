@@ -28,19 +28,14 @@ import backtype.storm.tuple.Tuple;
 
 public class PrinterBolt extends BaseBasicBolt {
   private static final long serialVersionUID = 394263766896592119L;
-  private String id;
-  private String topology;
 
   @SuppressWarnings("rawtypes")
   @Override
-  public void prepare(Map stormConf, TopologyContext context) {
-	  this.id = context.getThisComponentId();
-	  this.topology = context.getStormId();
-  }
+  public void prepare(Map stormConf, TopologyContext context) {}
   
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {	
-    System.out.println(this.topology + " " + this.id + " " + tuple);
+    System.out.println(tuple);
   }
 
   @Override

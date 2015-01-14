@@ -5,16 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import nl.utwente.bigdata.bolts.PrinterBolt;
-import nl.utwente.bigdata.spouts.TwitterSpout;
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
 import backtype.storm.StormSubmitter;
 import backtype.storm.generated.AlreadyAliveException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.generated.StormTopology;
-import backtype.storm.topology.TopologyBuilder;
-import backtype.storm.utils.Utils;
 
 public abstract class AbstractTopologyRunner {
 	
@@ -30,8 +26,8 @@ public abstract class AbstractTopologyRunner {
         /*
             Run for 10 minutes, otherwise you can't see the effect of the 2 minute tickle.
         */     
-        Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 10 * 60 * 1000 + "")));
-        cluster.shutdown();
+        //Utils.sleep(Integer.parseInt(properties.getProperty("sleep", 10 * 60 * 1000 + "")));
+        //cluster.shutdown();
     }
     
     // start 
