@@ -21,12 +21,14 @@ package nl.utwente.bigdata;
 import java.util.Properties;
 
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
+import nl.utwente.bigdata.bolts.CountGoalBolt;
 import nl.utwente.bigdata.bolts.PrinterBolt;
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;
 import storm.kafka.ZkHosts;
 import backtype.storm.generated.StormTopology;
 import backtype.storm.topology.TopologyBuilder;
+import backtype.storm.tuple.Fields;
 
 public class ScoreSummarizer extends AbstractTopologyRunner {   
 	
@@ -46,6 +48,7 @@ public class ScoreSummarizer extends AbstractTopologyRunner {
 			"worldcup"
 		);
 
+		spoutConf.forceFromStart = true;
 		spoutConf.scheme = new TweetFormat();
 		KafkaSpout spout = new KafkaSpout(spoutConf);
 		
@@ -55,16 +58,18 @@ public class ScoreSummarizer extends AbstractTopologyRunner {
 		
 		
 		//Check the location and pass if it states goal for a given country
+		// "tweet" -> "time", "country"
 		boltId = "checkGoal";
-		builder.setBolt(boltId, new CheckGoalBolt()).shuffleGrouping(prevId); // "tweet" -> "country"
+		builder.setBolt(boltId, new CheckGoalBolt()).shuffleGrouping(prevId);
 		prevId = boltId;
 		
 		
-//		//Count the
-//		boltId = "counter";
-//		builder.setBolt(boltId, new TokenizerBolt()).shuffleGrouping(prevId); // "words" -> "word"
-//		prevId = boltId;
-//		
+		//Count the country occurrences
+		// "time", "country" -> "time", "timespan", "country", "amount"
+		boltId = "counter";
+		builder.setBolt(boltId, new CountGoalBolt()).fieldsGrouping(prevId, new Fields("country")); 
+		prevId = boltId;
+		
 //		
 //		boltId = "topcounter";
 //		builder.setBolt(boltId, new TopCounterBolt(25)).fieldsGrouping(prevId, new Fields("word")); // "word" -> "word", "count"
@@ -92,8 +97,8 @@ public class ScoreSummarizer extends AbstractTopologyRunner {
 		/*
 		 * OUTPUT 2: standard out
 		 */
-//		boltId = "print";
-//		builder.setBolt(boltId, new PrinterBolt()).shuffleGrouping(prevId);
+		boltId = "print";
+		builder.setBolt(boltId, new PrinterBolt()).shuffleGrouping(prevId);
 
 		StormTopology topology = builder.createTopology();
 		return topology;

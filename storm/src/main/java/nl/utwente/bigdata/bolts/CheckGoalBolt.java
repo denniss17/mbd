@@ -101,9 +101,9 @@ public class CheckGoalBolt extends BaseBasicBolt {
 		  return null;
 	  }
 	  
-	  System.out.println(text.length() + "\t" + lang + "\t" + hashtags);
+	  //System.out.println(text.length() + "\t" + lang + "\t" + hashtags);
 	  
-	  return null;
+	  return lang;
   }
 
 }
