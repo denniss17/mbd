@@ -21,7 +21,7 @@ package nl.utwente.bigdata;
 import java.util.Properties;
 
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
-import nl.utwente.bigdata.bolts.PrinterBolt;
+import nl.utwente.bigdata.bolts.TweetJsonParseBolt;
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;
 import storm.kafka.ZkHosts;
@@ -37,7 +37,7 @@ public class ScoreSummarizer extends AbstractTopologyRunner {
 		String boltId = "";
 		String prevId;
 		
-		//Set up the kafka spout
+		// Set up the kafka spout
 		boltId = "kafka";
 		SpoutConfig spoutConf = new SpoutConfig(
 			new ZkHosts(properties.getProperty("zkhost", "localhost:2181")),
@@ -49,15 +49,23 @@ public class ScoreSummarizer extends AbstractTopologyRunner {
 		spoutConf.scheme = new TweetFormat();
 		KafkaSpout spout = new KafkaSpout(spoutConf);
 		
-		//Add the kafka spout
+		// Add the kafka spout
 		builder.setSpout(boltId, spout); 
 		prevId = boltId;
 		
-		
-		//Check the location and pass if it states goal for a given country
-		boltId = "checkGoal";
-		builder.setBolt(boltId, new CheckGoalBolt()).shuffleGrouping(prevId); // "tweet" -> "country"
+		// Parse the tweet
+		boltId = "parser";
+		builder.setBolt(boltId, new TweetJsonParseBolt()).shuffleGrouping(prevId);
 		prevId = boltId;
+		
+		// Extract goals
+		// "tweet" -> "country"
+		boltId = "goals";
+		builder.setBolt(boltId, new CheckGoalBolt()).shuffleGrouping(prevId);
+		prevId = boltId;
+		
+		 
+		
 		
 		
 //		//Count the

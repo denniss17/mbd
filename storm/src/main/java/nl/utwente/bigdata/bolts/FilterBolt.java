@@ -17,33 +17,41 @@
  */
 package nl.utwente.bigdata.bolts;
 
-import java.util.List;
+import java.util.Map;
 
+import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
+import backtype.storm.topology.base.BaseBasicBolt;
 import backtype.storm.tuple.Fields;
+import backtype.storm.tuple.Tuple;
+import backtype.storm.tuple.Values;
 
-public class CheckGoalBolt extends TweetCheckBolt {
-
+/**
+ * Filter text by a given string
+ * Only strings which contain the given string are emitted
+ */
+public class FilterBolt extends BaseBasicBolt {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2632529340918678149L;
+	private static final long serialVersionUID = 4277590054551045255L;
+	private String sample;
 
-	@Override
-	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("time", "country"));
+	public FilterBolt(String sample) {
+		super();
+		this.sample = sample;
 	}
 
 	@Override
-	protected void checkTweet(String text, String lang, String time,
-			List<String> hashtags, BasicOutputCollector collector) {
-		if (text == null || lang == null) {
-			return;
-		}
+	public void execute(Tuple tuple, BasicOutputCollector collector) {
+		String val = tuple.getStringByField("words");
+		if(val.contains(sample)) collector.emit(new Values(val));
+	}
 
-		System.out.println(text.length() + "\t" + lang + "\t" + hashtags);
-
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("words"));
 	}
 
 }

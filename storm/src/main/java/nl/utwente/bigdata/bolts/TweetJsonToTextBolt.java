@@ -20,7 +20,6 @@ package nl.utwente.bigdata.bolts;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.apache.hadoop.log.LogLevel;
 import org.json.simple.parser.JSONParser;
 
 import backtype.storm.task.TopologyContext;
@@ -31,41 +30,46 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
-
 public class TweetJsonToTextBolt extends BaseBasicBolt {
-  private static Logger logger = Logger.getLogger(TweetJsonToTextBolt.class.getName());
-  private transient JSONParser parser;
-  
-  @Override
-  public void prepare(Map stormConf, TopologyContext context) {
-	  parser = new JSONParser();
-  }
-  
-  @Override
-  public void execute(Tuple tuple, BasicOutputCollector collector) {
-	  try {
-        Map<String, Object> tweet = (Map<String, Object>) parser.parse(tuple.getString(0));
-        
-        String text = (String) tweet.get("text");
-        System.out.println(text);
-        collector.emit(new Values(text));
-      }
-      catch (ClassCastException e) {      	
-    	logger.info(e.toString());
-        return; // do nothing (we might log this)
-      }
-      catch (org.json.simple.parser.ParseException e) {
-    	System.out.println("ParseException");
-    	e.printStackTrace();
-        return; // do nothing 
-      } catch (Exception e) {
-    	  e.printStackTrace();
-      }
-  }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8927907432583421663L;
+	private static Logger logger = Logger.getLogger(TweetJsonToTextBolt.class
+			.getName());
+	private transient JSONParser parser;
 
-  @Override
-  public void declareOutputFields(OutputFieldsDeclarer declarer) {
-	  declarer.declare(new Fields("words"));
-  }
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void prepare(Map stormConf, TopologyContext context) {
+		parser = new JSONParser();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void execute(Tuple tuple, BasicOutputCollector collector) {
+		try {
+			Map<String, Object> tweet = (Map<String, Object>) parser
+					.parse(tuple.getString(0));
+
+			String text = (String) tweet.get("text");
+			System.out.println(text);
+			collector.emit(new Values(text));
+		} catch (ClassCastException e) {
+			logger.info(e.toString());
+			return; // do nothing (we might log this)
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("ParseException");
+			e.printStackTrace();
+			return; // do nothing
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("words"));
+	}
 
 }

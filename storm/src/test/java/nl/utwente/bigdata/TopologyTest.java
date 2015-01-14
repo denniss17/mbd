@@ -18,7 +18,7 @@ public class TopologyTest {
 	}
 	*/
 	
-	@Test
+	/*@Test
 	public void testRandomTweet() {
 		Properties properties = new Properties();
 		SaveRandomTweets topology = new SaveRandomTweets();
@@ -37,5 +37,5 @@ public class TopologyTest {
 		Properties properties = new Properties();
 		AbstractTopologyRunner runner= new Assignment4_3();
 		runner.runLocal("test", properties);
-	}
+	}*/
 }
