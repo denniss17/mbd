@@ -46,6 +46,9 @@ public class WorldCupReader {
 
 	private WorldCupReader() {}
 	
+	/**
+	 * Load the data from the JSON file and parse it
+	 */
 	public void load() {
 		try {
 			JSONArray data = loadData();
@@ -63,6 +66,11 @@ public class WorldCupReader {
 		
 	}
 	
+	/**
+	 * Read the raw content from the JSON file
+	 * @return String the content of the file
+	 * @throws IOException
+	 */
 	String loadRawData() throws IOException{
 		StringBuilder stringBuilder = new StringBuilder();
 		
@@ -78,6 +86,12 @@ public class WorldCupReader {
 		return stringBuilder.toString();
 	}
 
+	/**
+	 * Read the content from the JSON file and parse it
+	 * @return A JSONArray containing JSONObjects
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	private JSONArray loadData() throws IOException, ParseException{
 		// Load data
 		String rawData = loadRawData();
