@@ -23,17 +23,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import backtype.storm.spout.SpoutOutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.tuple.Fields;
-import backtype.storm.tuple.Values;
+import org.json.simple.parser.ParseException;
 
 /**
  * This class reads worldcup info like played matches and returns it on request
@@ -50,54 +44,84 @@ public class WorldCupReader {
 		return instance;
 	}
 
-	private void WorldCupReader() {
-		this.matches = new ArrayList<Match>();
-
-		// Read data on startup
+	private WorldCupReader() {}
+	
+	public void load() {
 		try {
-			StringBuilder stringBuilder = new StringBuilder();
-			parser = new JSONParser();
-
-			// Read content of json file
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					getClass().getResourceAsStream("worldcup-games.json")));
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				stringBuilder.append(line);
-			}
-			reader.close();
-
-			// Parse the json
-			JSONArray data = (JSONArray) parser.parse(stringBuilder.toString());
-			for (Object m : data) {
-				JSONObject match = (JSONObject) m;
-
-				JSONObject home = (JSONObject) match.get("home");
-				JSONObject away = (JSONObject) match.get("away");
-
-				Match result = new Match();
-
-				result.homeCountry = (String) home.get("name");
-				result.awayCountry = (String) away.get("name");
-				result.start = (String) match.get("time");
-				this.matches.add(result);
-				System.out.println(result);
-			}
-			
-			// Sort on time
-			Collections.sort(this.matches);
+			JSONArray data = loadData();
+			matches = loadMatches(data);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (Exception e) {
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassCastException e){
+			// Some JSON was incorrectly casted
 			e.printStackTrace();
 		}
+		
+	}
+	
+	String loadRawData() throws IOException{
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		// Read content of json file
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				this.getClass().getResourceAsStream("worldcup-games.json")));
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			stringBuilder.append(line);
+		}
+		reader.close();
+		
+		return stringBuilder.toString();
+	}
+
+	private JSONArray loadData() throws IOException, ParseException{
+		// Load data
+		String rawData = loadRawData();
+		
+		// Parse the json
+		parser = new JSONParser();
+		JSONArray data = (JSONArray) parser.parse(rawData);
+		
+		return data;
+	}
+	
+	private List<Match> loadMatches(JSONArray data){
+		List<Match> result = new ArrayList<Match>();
+
+		// Read data on startup
+		for (Object m : data) {
+			JSONObject matchObject = (JSONObject) m;
+
+			JSONObject home = (JSONObject) matchObject.get("home");
+			JSONObject away = (JSONObject) matchObject.get("away");
+
+			Match match = new Match();
+
+			match.homeCountry = (String) home.get("name");
+			match.awayCountry = (String) away.get("name");
+			match.start = (String) matchObject.get("time");
+			result.add(match);
+		}
+		
+		// Sort on time
+		Collections.sort(result);
+		
+		return result;
 	}
 
 	/**
 	 * Get the scheduled matches of the World Cup
-	 * @return a list of Matches
+	 * @return a list of Matches or null if the loading failed
 	 */
 	public List<Match> getMatches() {
-		return matches;
+		// Lazy loading
+		if(this.matches == null) {
+			this.load();
+		}
+		return this.matches;
 	}
 }
