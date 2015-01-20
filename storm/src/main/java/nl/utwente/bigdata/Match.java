@@ -14,6 +14,9 @@ public class Match{
 	public String awayCountry;
 	public String hashtag;
 	
+	public int homeGoals;
+	public int awayGoals;
+	
 	//public String score;
 	//public JSONArray homeGoals;
 	//public JSONArray awayGoals;

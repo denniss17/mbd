@@ -1,18 +1,18 @@
 package nl.utwente.bigdata;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
 public class WorldCupReaderTest {
 
 	/**
-	 * Test if the file reading is successfull
+	 * Test if the file reading is successful
 	 */
 	@Test
 	public void testLoadData() {
@@ -41,5 +41,6 @@ public class WorldCupReaderTest {
 		// total = 64
 		assertEquals(matches.size(), 64);
 	}
+	
 
 }

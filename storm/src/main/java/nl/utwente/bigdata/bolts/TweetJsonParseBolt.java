@@ -55,14 +55,15 @@ public class TweetJsonParseBolt extends BaseBasicBolt {
 			
 			collector.emit(new Values(text, lang, time, hashtags));
 		} catch (ClassCastException e) {
-			logger.info(e.toString());
+			//logger.info(e.toString());
 			return; // do nothing (we might log this)
 		} catch (org.json.simple.parser.ParseException e) {
-			System.out.println("ParseException");
-			e.printStackTrace();
+			//logger.info(e.toString());
+			//e.printStackTrace();
 			return; // do nothing
 		} catch (Exception e) {
 			e.printStackTrace();
+			return;
 		}
 	}
 

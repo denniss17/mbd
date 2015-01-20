@@ -1,11 +1,8 @@
 package nl.utwente.bigdata;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
-import nl.utwente.bigdata.bolts.CountGoalBolt;
 import nl.utwente.bigdata.bolts.PrinterBolt;
 import nl.utwente.bigdata.bolts.TweetJsonParseBolt;
 import storm.kafka.KafkaSpout;
@@ -13,13 +10,9 @@ import storm.kafka.SpoutConfig;
 import storm.kafka.ZkHosts;
 import backtype.storm.generated.StormTopology;
 import backtype.storm.topology.TopologyBuilder;
-import backtype.storm.tuple.Fields;
 
 public class GoalDetector extends AbstractTopologyRunner {
-
-	/** The list of scheduled mathces of the WorldCup */
-	private Map<String, Match> matches;
-
+	
 	@Override
 	protected StormTopology buildTopology(Properties properties) {
 		TopologyBuilder builder = new TopologyBuilder();
@@ -29,10 +22,14 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 		// Set up the kafka spout
 		boltId = "kafka";
-		SpoutConfig spoutConf = new SpoutConfig(new ZkHosts(
-				properties.getProperty("zkhost", "localhost:2181")),
-				properties.getProperty("topic", "worldcup"), "/brokers",
-				"worldcup");
+		SpoutConfig spoutConf = new SpoutConfig(
+				new ZkHosts(
+						properties.getProperty("zkhost", "localhost:2181"), 
+						"/brokers"),
+				properties.getProperty("topic", "worldcup"), 
+				"/kafka",
+				"worldcup"
+				);
 
 		spoutConf.forceFromStart = true;
 		spoutConf.scheme = new TweetFormat();
@@ -44,21 +41,22 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 		// Parse the tweet
 		boltId = "parser";
-		builder.setBolt(boltId, new TweetJsonParseBolt()).shuffleGrouping(
-				prevId);
+		builder.setBolt(boltId, new TweetJsonParseBolt()).shuffleGrouping(prevId);
 		prevId = boltId;
 
 		// Extract goals
-		// "tweet" -> "country"
-		builder.setBolt(boltId, new CheckGoalBolt(matches)).shuffleGrouping(prevId);
+		// Output: 
+		// time : Date the time of the tweet
+		// country : String the name of the country which scored
+		boltId = "checkgoal";
+		builder.setBolt(boltId, new CheckGoalBolt()).shuffleGrouping(prevId);
 		prevId = boltId;
 
 		// Count the country occurrences
-		// "time", "country" -> "time", "timespan", "country", "amount"
-		boltId = "counter";
+		/*boltId = "counter";
 		builder.setBolt(boltId, new CountGoalBolt()).fieldsGrouping(prevId,
 				new Fields("country"));
-		prevId = boltId;
+		prevId = boltId;*/
 
 		//
 		// boltId = "topcounter";
@@ -95,7 +93,7 @@ public class GoalDetector extends AbstractTopologyRunner {
 		 * OUTPUT 2: standard out
 		 */
 		boltId = "print";
-		builder.setBolt(boltId, new PrinterBolt()).shuffleGrouping(prevId);
+		builder.setBolt(boltId, new PrinterBolt()).globalGrouping(prevId);
 
 		StormTopology topology = builder.createTopology();
 		return topology;
@@ -111,14 +109,9 @@ public class GoalDetector extends AbstractTopologyRunner {
 			a[1] = args[0];
 			
 			GoalDetector goalDetector = new GoalDetector();
-			goalDetector.setMatches(WorldCupReader.getInstance().getMatches());
 			goalDetector.run(a);
 		}
 
 		
-	}
-
-	private void setMatches(Map<String, Match> map) {
-		this.matches = map;
 	}
 }

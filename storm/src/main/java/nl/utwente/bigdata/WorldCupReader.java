@@ -125,6 +125,17 @@ public class WorldCupReader {
 			match.homeCountry = (String) home.get("name");
 			match.awayCountry = (String) away.get("name");
 			
+			String homeTag = CountryHashtags.get(match.homeCountry);
+			String awayTag = CountryHashtags.get(match.awayCountry);
+			
+			if(homeTag == null){
+				// Ugly but works
+				throw new RuntimeException("No tag found for " + match.homeCountry);
+			}
+			if(awayTag == null){
+				throw new RuntimeException("No tag found for " + match.awayCountry);
+			}
+			
 			String hashtag = CountryHashtags.get(match.homeCountry) + CountryHashtags.get(match.awayCountry);
 			
 			match.hashtag = hashtag;

@@ -3,9 +3,15 @@ package nl.utwente.bigdata;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class contains all 3 letter tags for the countries attending the worldcup
+ */
 public class CountryHashtags {
 	public static Map<String, String> hashtags;
 	
+	/*
+	 * Put all tags in the map
+	 */
 	static{
 		hashtags = new HashMap<String, String>();
 		
@@ -61,6 +67,7 @@ public class CountryHashtags {
 		hashtags.put("Australia", "AUS");
 //		COL Columbia
 		hashtags.put("Columbia", "COL");
+		hashtags.put("Colombia", "COL");
 //		GRE Greece
 		hashtags.put("Greece", "GRE");
 //		URU Uruguay
@@ -87,6 +94,7 @@ public class CountryHashtags {
 		hashtags.put("Argentina", "ARG");
 //		BIH Bosnia
 		hashtags.put("Bosnia", "BIH");
+		hashtags.put("Bosnia and Herzegovina", "BIH");
 //		GER Germany
 		hashtags.put("Germany", "GER");
 //		POR Portugal
@@ -107,8 +115,14 @@ public class CountryHashtags {
 		hashtags.put("Russia", "RUS");
 //		KOR Korea
 		hashtags.put("Korea", "KOR");
+		hashtags.put("Korea Republic", "KOR");
 	}
 
+	/**
+	 * Get the tag for a given countryname
+	 * @param country The country to get the tag of
+	 * @return
+	 */
 	public static String get(String country) {
 		return hashtags.get(country);
 	}
