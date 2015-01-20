@@ -17,6 +17,8 @@
  */
 package nl.utwente.bigdata.bolts;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -30,7 +32,6 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
-import backtype.storm.tuple.Values;
 
 public class SQLOutputBolt extends BaseBasicBolt {
 
@@ -67,7 +68,10 @@ public class SQLOutputBolt extends BaseBasicBolt {
 		builder.append("&score=" + tuple.getIntegerByField("homeScore") + "-"
 				+ tuple.getIntegerByField("awayScore"));
 
-		this.executeHTTPGet(builder.toString());
+		
+		System.out.println(builder.toString());
+		this.executeHTTPGet(builder.toString().replace(" ", "%20"));
+		
 
 		// collector.emit(new Values(builder.toString()));
 
@@ -81,7 +85,12 @@ public class SQLOutputBolt extends BaseBasicBolt {
 			// Create connection
 			url = new URL(url2);
 			connection = (HttpURLConnection) url.openConnection();
-			connection.connect();
+			BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String line = null;
+			while((line = input.readLine()) != null){
+				System.out.println(line);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
