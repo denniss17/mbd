@@ -128,6 +128,8 @@ public class WorldCupReader {
 			String homeTag = CountryHashtags.get(match.homeCountry);
 			String awayTag = CountryHashtags.get(match.awayCountry);
 			
+			// For testing purposes : throw exception if a tag is not defined
+			// This will cause the build to fail
 			if(homeTag == null){
 				// Ugly but works
 				throw new RuntimeException("No tag found for " + match.homeCountry);
