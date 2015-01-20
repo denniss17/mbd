@@ -1,5 +1,8 @@
 package nl.utwente.bigdata.bolts;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import backtype.storm.topology.BasicOutputCollector;
@@ -12,6 +15,8 @@ public abstract class TweetCheckBolt extends BaseBasicBolt {
 	 * 
 	 */
 	private static final long serialVersionUID = -2299961857911526321L;
+	// Thu Jul 03 05:17:20 +0000 2014
+	private static final String TIME_FORMAT = "EEE MMM dd HH:mm:ss Z yyyy";
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -19,7 +24,7 @@ public abstract class TweetCheckBolt extends BaseBasicBolt {
 		try {
 			String text = tuple.getStringByField("text");
 			String lang = tuple.getStringByField("lang");
-			String time = tuple.getStringByField("time");
+			Date time = this.parseTime(tuple.getStringByField("time"));
 			List<String> hashtags = (List<String>) tuple
 					.getValueByField("hashtags");
 
@@ -29,6 +34,11 @@ public abstract class TweetCheckBolt extends BaseBasicBolt {
 		}
 	}
 
-	protected abstract void checkTweet(String text, String lang, String time,
+	private Date parseTime(String date) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT);
+        return formatter.parse(date);
+	}
+
+	protected abstract void checkTweet(String text, String lang, Date time,
 			List<String> hashtags, BasicOutputCollector collector);
 }

@@ -20,9 +20,13 @@ package nl.utwente.bigdata;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,8 +39,11 @@ import org.json.simple.parser.ParseException;
 public class WorldCupReader {
 	private static WorldCupReader instance;
 
-	private List<Match> matches;
+	private Map<String, Match> matches;
 	private transient JSONParser parser;
+	
+	// 2014-06-12 17:00:00
+	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss ZZZZ";
 
 	public static WorldCupReader getInstance() {
 		if (instance == null)
@@ -103,8 +110,8 @@ public class WorldCupReader {
 		return data;
 	}
 	
-	private List<Match> loadMatches(JSONArray data){
-		List<Match> result = new ArrayList<Match>();
+	private Map<String, Match> loadMatches(JSONArray data){
+		Map<String, Match> result = new HashMap<String, Match>();
 
 		// Read data on startup
 		for (Object m : data) {
@@ -117,21 +124,33 @@ public class WorldCupReader {
 
 			match.homeCountry = (String) home.get("name");
 			match.awayCountry = (String) away.get("name");
-			match.start = (String) matchObject.get("time");
-			result.add(match);
+			
+			String hashtag = CountryHashtags.get(match.homeCountry) + CountryHashtags.get(match.awayCountry);
+			
+			match.hashtag = hashtag;
+			
+			/*try {
+				match.start = this.parseTime((String) matchObject.get("time"));
+			} catch (java.text.ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			result.put(hashtag, match);
 		}
 		
-		// Sort on time
-		Collections.sort(result);
-		
 		return result;
+	}
+
+	private Date parseTime(String date) throws java.text.ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT);
+        return formatter.parse(date + " -0200");
 	}
 
 	/**
 	 * Get the scheduled matches of the World Cup
 	 * @return a list of Matches or null if the loading failed
 	 */
-	public List<Match> getMatches() {
+	public Map<String, Match> getMatches() {
 		// Lazy loading
 		if(this.matches == null) {
 			this.load();

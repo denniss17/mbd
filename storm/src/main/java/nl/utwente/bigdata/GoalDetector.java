@@ -1,6 +1,7 @@
 package nl.utwente.bigdata;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
@@ -17,7 +18,7 @@ import backtype.storm.tuple.Fields;
 public class GoalDetector extends AbstractTopologyRunner {
 
 	/** The list of scheduled mathces of the WorldCup */
-	private List<Match> matches;
+	private Map<String, Match> matches;
 
 	@Override
 	protected StormTopology buildTopology(Properties properties) {
@@ -117,7 +118,7 @@ public class GoalDetector extends AbstractTopologyRunner {
 		
 	}
 
-	private void setMatches(List<Match> matches) {
-		this.matches = matches;
+	private void setMatches(Map<String, Match> map) {
+		this.matches = map;
 	}
 }
