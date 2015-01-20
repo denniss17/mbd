@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
 import nl.utwente.bigdata.bolts.PrinterBolt;
+import nl.utwente.bigdata.bolts.SQLOutputBolt;
 import nl.utwente.bigdata.bolts.TweetJsonParseBolt;
 
 import org.apache.storm.hdfs.bolt.HdfsBolt;
@@ -76,6 +77,11 @@ public class GoalDetector extends AbstractTopologyRunner {
 		// TopCounterBolt(25)).fieldsGrouping(prevId, new Fields("word")); //
 		// "word" -> "word", "count"
 		// prevId = boltId;
+		
+		// Create URLS
+		boltId = "sqloutput";
+		builder.setBolt(boltId, new SQLOutputBolt()).shuffleGrouping(prevId);
+		prevId = boltId;
 
 		/*
 		 * OUTPUT 1: hdfs

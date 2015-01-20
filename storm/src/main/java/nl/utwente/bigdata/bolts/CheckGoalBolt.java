@@ -43,7 +43,7 @@ public class CheckGoalBolt extends TweetCheckBolt {
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("time", "homeCountry", "awayCountry", "homeScore", "awayScore"));
+		declarer.declare(new Fields("time", "hashtag", "homeCountry", "awayCountry", "homeScore", "awayScore"));
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class CheckGoalBolt extends TweetCheckBolt {
 						Match match = matches.get(hashtag);
 						
 						// System.out.println(hashtag);
-						collector.emit(new Values(time, match.homeCountry, match.awayCountry, homeGoals, awayGoals));
+						collector.emit(new Values(time, match.hashtag, match.homeCountry, match.awayCountry, homeGoals, awayGoals));
 						
 						/*if(homeGoals > match.homeGoals){
 							// It looks like the home country scored
