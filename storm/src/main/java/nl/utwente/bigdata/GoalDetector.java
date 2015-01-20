@@ -110,8 +110,8 @@ public class GoalDetector extends AbstractTopologyRunner {
 		/*
 		 * OUTPUT 2: standard out
 		 */
-		boltId = "print";
-		builder.setBolt(boltId, new PrinterBolt()).globalGrouping(prevId);
+		//boltId = "print";
+		//builder.setBolt(boltId, new PrinterBolt()).globalGrouping(prevId);
 
 		StormTopology topology = builder.createTopology();
 		return topology;

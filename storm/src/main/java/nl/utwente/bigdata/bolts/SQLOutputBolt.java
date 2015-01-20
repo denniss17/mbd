@@ -85,12 +85,12 @@ public class SQLOutputBolt extends BaseBasicBolt {
 			// Create connection
 			url = new URL(url2);
 			connection = (HttpURLConnection) url.openConnection();
-			BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			String line = null;
-			while((line = input.readLine()) != null){
-				System.out.println(line);
-			}
-			
+			connection.getInputStream();
+			//BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			//String line = null;
+			//while((line = input.readLine()) != null){
+			//	System.out.println(line);
+			//}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
