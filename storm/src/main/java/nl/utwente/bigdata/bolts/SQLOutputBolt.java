@@ -17,6 +17,8 @@
  */
 package nl.utwente.bigdata.bolts;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -31,7 +33,7 @@ import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
 public class SQLOutputBolt extends BaseBasicBolt {
-	
+
 	private static final String SERVER_URL = "http://mbd.dennisschroer.nl/database_upload.php";
 
 	private static final long serialVersionUID = -4036021649003516880L;
@@ -46,24 +48,47 @@ public class SQLOutputBolt extends BaseBasicBolt {
 
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		// fields in tuple: "time":Date, "hashtag":String, "homeCountry":String, "awayCountry":String, "homeScore":int, "awayScore":int
-		
+		// fields in tuple: "time":Date, "hashtag":String, "homeCountry":String,
+		// "awayCountry":String, "homeScore":int, "awayScore":int
+
 		Date time = (Date) tuple.getValueByField("time");
-		
+
 		StringBuilder builder = new StringBuilder();
-				SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
 		dateFormat.setTimeZone(TIMEZONE);
-		
+
 		builder.append(SERVER_URL);
 		builder.append("?time=" + dateFormat.format(time));
 		builder.append("&matchhash=" + tuple.getStringByField("hashtag"));
-		builder.append("&country1=" + tuple.getStringByField("homeCountry").toLowerCase());
-		builder.append("&country2=" + tuple.getStringByField("awayCountry").toLowerCase());
-		builder.append("&score=" + tuple.getIntegerByField("homeScore") + "-" + tuple.getIntegerByField("awayScore"));
-		
-		collector.emit(new Values(builder.toString()));
-		
-		//System.out.println(tuple);
+		builder.append("&country1="
+				+ tuple.getStringByField("homeCountry").toLowerCase());
+		builder.append("&country2="
+				+ tuple.getStringByField("awayCountry").toLowerCase());
+		builder.append("&score=" + tuple.getIntegerByField("homeScore") + "-"
+				+ tuple.getIntegerByField("awayScore"));
+
+		this.executeHTTPGet(builder.toString());
+
+		// collector.emit(new Values(builder.toString()));
+
+		// System.out.println(tuple);
+	}
+
+	private void executeHTTPGet(String url2) {
+		URL url;
+		HttpURLConnection connection = null;
+		try {
+			// Create connection
+			url = new URL(url2);
+			connection = (HttpURLConnection) url.openConnection();
+			connection.connect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				connection.disconnect();
+			}
+		}
 	}
 
 	@Override

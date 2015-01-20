@@ -78,10 +78,11 @@ public class GoalDetector extends AbstractTopologyRunner {
 		// "word" -> "word", "count"
 		// prevId = boltId;
 		
-		// Create URLS
+		/*
+		 * OUTPUT 0: SQL
+		 */
 		boltId = "sqloutput";
 		builder.setBolt(boltId, new SQLOutputBolt()).shuffleGrouping(prevId);
-		prevId = boltId;
 
 		/*
 		 * OUTPUT 1: hdfs
