@@ -55,7 +55,7 @@ public class CheckGoalBolt extends TweetCheckBolt {
 		
 		// Check for matchhashtags
 		for(String hashtag : hashtags){
-			if(matchHashtags.contains(hashtag)){
+			if(matchHashtags.contains(hashtag.toUpperCase())){
 				// Tweet about a match
 				
 				// Check for scores

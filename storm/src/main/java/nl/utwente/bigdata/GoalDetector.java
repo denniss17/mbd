@@ -5,6 +5,18 @@ import java.util.Properties;
 import nl.utwente.bigdata.bolts.CheckGoalBolt;
 import nl.utwente.bigdata.bolts.PrinterBolt;
 import nl.utwente.bigdata.bolts.TweetJsonParseBolt;
+
+import org.apache.storm.hdfs.bolt.HdfsBolt;
+import org.apache.storm.hdfs.bolt.format.DefaultFileNameFormat;
+import org.apache.storm.hdfs.bolt.format.DelimitedRecordFormat;
+import org.apache.storm.hdfs.bolt.format.FileNameFormat;
+import org.apache.storm.hdfs.bolt.format.RecordFormat;
+import org.apache.storm.hdfs.bolt.rotation.FileRotationPolicy;
+import org.apache.storm.hdfs.bolt.rotation.FileSizeRotationPolicy;
+import org.apache.storm.hdfs.bolt.sync.CountSyncPolicy;
+import org.apache.storm.hdfs.bolt.sync.SyncPolicy;
+import org.apache.storm.hdfs.common.rotation.MoveFileAction;
+
 import storm.kafka.KafkaSpout;
 import storm.kafka.SpoutConfig;
 import storm.kafka.ZkHosts;
@@ -68,26 +80,25 @@ public class GoalDetector extends AbstractTopologyRunner {
 		/*
 		 * OUTPUT 1: hdfs
 		 */
-		// boltId = "file";
-		// SyncPolicy syncPolicy = new CountSyncPolicy(1000);
-		// FileRotationPolicy rotationPolicy = new FileSizeRotationPolicy(1,
-		// FileSizeRotationPolicy.Units.KB); // rotate files when they reach 1KB
-		// FileNameFormat fileNameFormat = new
-		// DefaultFileNameFormat().withPath("/user/martijn/tweets/").withExtension(".txt");
-		// RecordFormat format = new
-		// DelimitedRecordFormat().withFieldDelimiter("|"); // use "|" instead
-		// of "," for field delimiter
-		//
-		// HdfsBolt bolt = new HdfsBolt()
-		// .withFsUrl("hdfs://localhost:8020")
-		// .withFileNameFormat(fileNameFormat)
-		// .withRecordFormat(format)
-		// .withRotationPolicy(rotationPolicy)
-		// .withSyncPolicy(syncPolicy)
-		// .addRotationAction(new
-		// MoveFileAction().toDestination("/user/martijn/old/"));
-		//
-		// builder.setBolt(boltId, bolt).shuffleGrouping(prevId);
+		 boltId = "file";
+		 SyncPolicy syncPolicy = new CountSyncPolicy(1000);
+		 FileRotationPolicy rotationPolicy = new FileSizeRotationPolicy(100,
+		 FileSizeRotationPolicy.Units.MB); // rotate files when they reach 1KB
+		 FileNameFormat fileNameFormat = new
+		 DefaultFileNameFormat().withPath("/output/").withExtension(".csv");
+		 RecordFormat format = new
+		 DelimitedRecordFormat().withFieldDelimiter(","); // use "|" instead of "," for field delimiter
+		
+		 HdfsBolt bolt = new HdfsBolt()
+		 .withFsUrl("hdfs://localhost:8020")
+		 .withFileNameFormat(fileNameFormat)
+		 .withRecordFormat(format)
+		 .withRotationPolicy(rotationPolicy)
+		 .withSyncPolicy(syncPolicy)
+		 .addRotationAction(new
+		 MoveFileAction().toDestination("/output/old/"));
+		
+		 builder.setBolt(boltId, bolt).globalGrouping(prevId);
 
 		/*
 		 * OUTPUT 2: standard out
@@ -97,7 +108,6 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 		StormTopology topology = builder.createTopology();
 		return topology;
-
 	}
 
 	public static void main(String[] args) {
@@ -105,7 +115,7 @@ public class GoalDetector extends AbstractTopologyRunner {
 			System.out.println("Usage: storm <>.jar nl.utwente.bigdata.GoalDetector local|cluster");
 		}else{
 			String[] a = new String[2];
-			a[0] = "ScoreSummarizer";
+			a[0] = "GoalDetector";
 			a[1] = args[0];
 			
 			GoalDetector goalDetector = new GoalDetector();
