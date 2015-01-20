@@ -69,7 +69,7 @@ public class SQLOutputBolt extends BaseBasicBolt {
 				+ tuple.getIntegerByField("awayScore"));
 
 		
-		System.out.println(builder.toString());
+		// System.out.println(builder.toString());
 		this.executeHTTPGet(builder.toString().replace(" ", "%20"));
 		
 

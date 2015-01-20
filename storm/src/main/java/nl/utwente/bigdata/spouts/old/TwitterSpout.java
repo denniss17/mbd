@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package nl.utwente.bigdata.spouts;
+package nl.utwente.bigdata.spouts.old;
 
 import java.util.Map;
 import java.util.Properties;

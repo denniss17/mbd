@@ -29,6 +29,7 @@ public class CheckGoalBolt extends TweetCheckBolt {
 	
 	private Matcher matcher;
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void prepare(Map stormConf, TopologyContext context) {
 		super.prepare(stormConf, context);

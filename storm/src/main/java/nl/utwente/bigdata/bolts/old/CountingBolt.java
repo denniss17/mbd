@@ -15,12 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata.bolts;
+package nl.utwente.bigdata.bolts.old;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import nl.utwente.bigdata.util.TupleHelpers;
+import backtype.storm.Config;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseBasicBolt;
@@ -28,37 +30,37 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
-public class NGramerBolt extends BaseBasicBolt {
-	private static final long serialVersionUID = 4031901444200770796L;
-	private static final long N = 2;
-	private long size = 0;	
+public class CountingBolt extends BaseBasicBolt {
+	private static final long serialVersionUID = 394263766896592119L;
+	private Map<String, Integer> counter = new HashMap<String, Integer>();
+	private int emission = 0;
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		
-			/*
-			 * Get the tweet text from the tuple
-			 */
-			String text = (String) tuple.getStringByField("words");
-			
-			/*
-			 * Split the tweet text into a list based on the delimiter
-			 */
-			List<String> list = new ArrayList<String>(Arrays.asList(text.split("\\s")));
-			
-			/*
-			 * Emit all the Ngrams
-			 */
-			for(int i = 0; i<list.size() - N + 1; i++) {
-				List<String> sublist = new ArrayList<String>(list.subList(i,(int) (i+N)));
-				collector.emit(new Values(sublist));
-				size += sublist.toString().length();
-				System.out.println(size);
+		if (TupleHelpers.isTickTuple(tuple)) {
+			for (Entry<String, Integer> entry : counter.entrySet()) {
+				collector.emit(new Values(entry.getKey(), entry.getValue(), emission));				
 			}
+			emission++;
+		} else {
+			String token = tuple.getString(0);
+			Integer count = counter.get(token);
+			if (count == null) {
+				count = 0;
+			}
+			count = count + 1;
+			counter.put(token, count);
+		}
 	}
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("n-gram"));
+		declarer.declare(new Fields("obj", "count", "emission"));
 	}
 
+	@Override
+	public Map<String, Object> getComponentConfiguration() {
+		Map<String, Object> conf = new HashMap<String, Object>();
+		conf.put(Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 10);
+		return conf;
+	}
 }

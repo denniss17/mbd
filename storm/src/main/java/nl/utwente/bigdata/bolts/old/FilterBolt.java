@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata.bolts;
+package nl.utwente.bigdata.bolts.old;
 
 import java.util.Map;
 
@@ -27,28 +27,31 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
+/**
+ * Filter text by a given string
+ * Only strings which contain the given string are emitted
+ */
+public class FilterBolt extends BaseBasicBolt {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4277590054551045255L;
+	private String sample;
 
-public class TokenizerBolt extends BaseBasicBolt {
-  private static final long serialVersionUID = 394263766896592119L;
-  private String field;
+	public FilterBolt(String sample) {
+		super();
+		this.sample = sample;
+	}
 
-  @SuppressWarnings("rawtypes")
-@Override
-  public void prepare(Map stormConf, TopologyContext context) {
-	  this.field = "words";
-  }
-  
-  @Override
-  public void execute(Tuple tuple, BasicOutputCollector collector) {
-	String val = tuple.getStringByField(this.field);
-    for (String token: val.split("\\s+")) {
-    	collector.emit(new Values(token));
-    }
-  }
+	@Override
+	public void execute(Tuple tuple, BasicOutputCollector collector) {
+		String val = tuple.getStringByField("words");
+		if(val.contains(sample)) collector.emit(new Values(val));
+	}
 
-  @Override
-  public void declareOutputFields(OutputFieldsDeclarer declarer) {
-	  declarer.declare(new Fields("word"));
-  }
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("words"));
+	}
 
 }

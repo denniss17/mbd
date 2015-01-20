@@ -16,13 +16,15 @@
  * limitations under the License.
  */
 
-package nl.utwente.bigdata;
+package nl.utwente.bigdata.old;
 
 import java.util.Properties;
 
-import nl.utwente.bigdata.bolts.FilterBolt;
+import nl.utwente.bigdata.AbstractTopologyRunner;
+import nl.utwente.bigdata.TweetFormat;
 import nl.utwente.bigdata.bolts.PrinterBolt;
-import nl.utwente.bigdata.bolts.TweetJsonToTextBolt;
+import nl.utwente.bigdata.bolts.old.FilterBolt;
+import nl.utwente.bigdata.bolts.old.TweetJsonToTextBolt;
 
 import org.apache.storm.hdfs.bolt.HdfsBolt;
 import org.apache.storm.hdfs.bolt.format.DefaultFileNameFormat;

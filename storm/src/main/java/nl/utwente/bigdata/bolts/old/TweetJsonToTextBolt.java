@@ -15,9 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata.bolts;
+package nl.utwente.bigdata.bolts.old;
 
 import java.util.Map;
+import java.util.logging.Logger;
+
+import org.json.simple.parser.JSONParser;
 
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
@@ -27,26 +30,41 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
-/**
- * Filter text by a given string
- * Only strings which contain the given string are emitted
- */
-public class FilterBolt extends BaseBasicBolt {
+public class TweetJsonToTextBolt extends BaseBasicBolt {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4277590054551045255L;
-	private String sample;
+	private static final long serialVersionUID = -8927907432583421663L;
+	private static Logger logger = Logger.getLogger(TweetJsonToTextBolt.class
+			.getName());
+	private transient JSONParser parser;
 
-	public FilterBolt(String sample) {
-		super();
-		this.sample = sample;
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void prepare(Map stormConf, TopologyContext context) {
+		parser = new JSONParser();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		String val = tuple.getStringByField("words");
-		if(val.contains(sample)) collector.emit(new Values(val));
+		try {
+			Map<String, Object> tweet = (Map<String, Object>) parser
+					.parse(tuple.getString(0));
+
+			String text = (String) tweet.get("text");
+			System.out.println(text);
+			collector.emit(new Values(text));
+		} catch (ClassCastException e) {
+			logger.info(e.toString());
+			return; // do nothing (we might log this)
+		} catch (org.json.simple.parser.ParseException e) {
+			System.out.println("ParseException");
+			e.printStackTrace();
+			return; // do nothing
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
