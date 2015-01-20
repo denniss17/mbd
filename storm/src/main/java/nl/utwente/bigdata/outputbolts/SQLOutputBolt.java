@@ -15,10 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata.bolts;
+package nl.utwente.bigdata.outputbolts;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -26,6 +24,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
 
+import nl.utwente.bigdata.util.Match;
+import nl.utwente.bigdata.util.Score;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -36,9 +36,7 @@ import backtype.storm.tuple.Tuple;
 public class SQLOutputBolt extends BaseBasicBolt {
 
 	private static final String SERVER_URL = "http://mbd.dennisschroer.nl/database_upload.php";
-
 	private static final long serialVersionUID = -4036021649003516880L;
-
 	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	private static final TimeZone TIMEZONE = TimeZone.getTimeZone("GMT");
 
@@ -49,33 +47,23 @@ public class SQLOutputBolt extends BaseBasicBolt {
 
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
-		// fields in tuple: "time":Date, "hashtag":String, "homeCountry":String,
-		// "awayCountry":String, "homeScore":int, "awayScore":int
 
 		Date time = (Date) tuple.getValueByField("time");
-
+		Match match = (Match) tuple.getValueByField("match");
+		Score score = (Score) tuple.getValueByField("score");
+		
 		StringBuilder builder = new StringBuilder();
 		SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
 		dateFormat.setTimeZone(TIMEZONE);
 
 		builder.append(SERVER_URL);
 		builder.append("?time=" + dateFormat.format(time));
-		builder.append("&matchhash=" + tuple.getStringByField("hashtag"));
-		builder.append("&country1="
-				+ tuple.getStringByField("homeCountry").toLowerCase());
-		builder.append("&country2="
-				+ tuple.getStringByField("awayCountry").toLowerCase());
-		builder.append("&score=" + tuple.getIntegerByField("homeScore") + "-"
-				+ tuple.getIntegerByField("awayScore"));
+		builder.append("&matchhash=" + match.hashtag);
+		builder.append("&country1=" + match.homeCountry.toLowerCase());
+		builder.append("&country2=" + match.awayCountry.toLowerCase());
+		builder.append("&score=" + score.T1goals + "-" + score.T2goals);
 
-		
-		// System.out.println(builder.toString());
 		this.executeHTTPGet(builder.toString().replace(" ", "%20"));
-		
-
-		// collector.emit(new Values(builder.toString()));
-
-		// System.out.println(tuple);
 	}
 
 	private void executeHTTPGet(String url2) {
@@ -86,11 +74,6 @@ public class SQLOutputBolt extends BaseBasicBolt {
 			url = new URL(url2);
 			connection = (HttpURLConnection) url.openConnection();
 			connection.getInputStream();
-			//BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			//String line = null;
-			//while((line = input.readLine()) != null){
-			//	System.out.println(line);
-			//}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -100,9 +83,8 @@ public class SQLOutputBolt extends BaseBasicBolt {
 		}
 	}
 
+	
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer ofd) {
-		ofd.declare(new Fields("url"));
 	}
-
 }

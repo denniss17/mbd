@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import nl.utwente.bigdata.bolts.CheckGoalBolt;
+import nl.utwente.bigdata.bolts.ExtractGoalFromTweetData;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class CheckGoalBoltTest {
 	
 	@Test
 	public void testScorePattern(){
-		Pattern pattern = CheckGoalBolt.scorePattern;
+		Pattern pattern = ExtractGoalFromTweetData.scorePattern;
 		
 		Matcher matcher = pattern.matcher("#GERBRA 200-1 bla bla");
 		if(matcher.find()){

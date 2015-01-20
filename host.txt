@@ -1,0 +1,15 @@
+URL
+mbd.dennisschroer.nl
+or
+dennisschroer.nl/mbd
+
+FTP
+host: 		dennisschroer.nl
+username: 	mbd@dennisschroer.nl
+password: 	EZsbeSQx9w
+
+MySQL
+Database:	dschroer_mbd
+Host:		localhost
+Username:	dschroer_mbd
+Password:	2ILhWciO

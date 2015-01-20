@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata.spouts.old;
+package nl.utwente.bigdata.spouts;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,49 +33,51 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
 
 public class JsonSpout extends BaseRichSpout {
-  private static final long serialVersionUID = -1497360044271864620L;
-  SpoutOutputCollector _collector;
-  Random _rand;
-  List<String> sentences = new ArrayList<String>(); 
+	private static final long serialVersionUID = -1497360044271864620L;
+	SpoutOutputCollector _collector;
+	Random _rand;
+	List<String> sentences = new ArrayList<String>();
 
-  @Override
-  public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {	
-    try {
-    	System.out.println("Reading tweets");
-    	BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("tweets")));
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			sentences.add(line);
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void open(Map conf, TopologyContext context,
+			SpoutOutputCollector collector) {
+		try {
+			System.out.println("Reading tweets");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					getClass().getResourceAsStream("tweets")));
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sentences.add(line);
+			}
+			reader.close();
+			System.out.println("Reading done");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		reader.close();
-		System.out.println("Reading done");
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (Exception e) {
-		e.printStackTrace();
+		_collector = collector;
+		_rand = new Random();
 	}
-    _collector = collector;
-    _rand = new Random();
-  }
 
-  @Override
-  public void nextTuple() {
-    String sentence = sentences.get(_rand.nextInt(sentences.size()));
-    _collector.emit(new Values(sentence));
-  }
+	@Override
+	public void nextTuple() {
+		String sentence = sentences.get(_rand.nextInt(sentences.size()));
+		_collector.emit(new Values(sentence));
+	}
 
-  @Override
-  public void ack(Object id) {
-  }
+	@Override
+	public void ack(Object id) {
+	}
 
-  @Override
-  public void fail(Object id) {
-  }
+	@Override
+	public void fail(Object id) {
+	}
 
-  @Override
-  public void declareOutputFields(OutputFieldsDeclarer declarer) {
-    declarer.declare(new Fields("tweet"));
-  }
+	@Override
+	public void declareOutputFields(OutputFieldsDeclarer declarer) {
+		declarer.declare(new Fields("line"));
+	}
 
 }

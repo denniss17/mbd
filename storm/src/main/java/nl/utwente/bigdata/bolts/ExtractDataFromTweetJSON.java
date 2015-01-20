@@ -17,15 +17,15 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
-public class TweetJsonParseBolt extends BaseBasicBolt {
+public class ExtractDataFromTweetJSON extends BaseBasicBolt {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1605773792988518130L;
-	private static Logger logger = Logger.getLogger(TweetJsonParseBolt.class
-			.getName());
+	private static Logger logger = Logger.getLogger(ExtractDataFromTweetJSON.class.getName());
 	private transient JSONParser parser;
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void prepare(Map stormConf, TopologyContext context) {
 		parser = new JSONParser();
@@ -51,14 +51,14 @@ public class TweetJsonParseBolt extends BaseBasicBolt {
 					hashtags.add(hashtagText);
 				}
 			}
-			
+
 			collector.emit(new Values(text, lang, time, hashtags));
 		} catch (ClassCastException e) {
-			//logger.info(e.toString());
+			logger.info(e.toString());
 			return; // do nothing (we might log this)
 		} catch (org.json.simple.parser.ParseException e) {
-			//logger.info(e.toString());
-			//e.printStackTrace();
+			logger.info(e.toString());
+			e.printStackTrace();
 			return; // do nothing
 		} catch (Exception e) {
 			e.printStackTrace();

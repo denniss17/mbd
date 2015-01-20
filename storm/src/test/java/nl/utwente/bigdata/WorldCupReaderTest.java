@@ -1,11 +1,14 @@
 package nl.utwente.bigdata;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import nl.utwente.bigdata.util.Match;
+import nl.utwente.bigdata.util.WorldCupReader;
 
 import org.junit.Test;
 

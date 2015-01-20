@@ -15,13 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.utwente.bigdata;
+package nl.utwente.bigdata.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,9 +36,9 @@ public class WorldCupReader {
 
 	private Map<String, Match> matches;
 	private transient JSONParser parser;
-	
+
 	// 2014-06-12 17:00:00
-	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss ZZZZ";
+	// private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss ZZZZ";
 
 	public static WorldCupReader getInstance() {
 		if (instance == null)
@@ -48,8 +46,9 @@ public class WorldCupReader {
 		return instance;
 	}
 
-	private WorldCupReader() {}
-	
+	private WorldCupReader() {
+	}
+
 	/**
 	 * Load the data from the JSON file and parse it
 	 */
@@ -63,51 +62,53 @@ public class WorldCupReader {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassCastException e){
+		} catch (ClassCastException e) {
 			// Some JSON was incorrectly casted
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	/**
 	 * Read the raw content from the JSON file
+	 * 
 	 * @return String the content of the file
 	 * @throws IOException
 	 */
-	String loadRawData() throws IOException{
+	public String loadRawData() throws IOException {
 		StringBuilder stringBuilder = new StringBuilder();
-		
+
 		// Read content of json file
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				this.getClass().getResourceAsStream("worldcup-games.json")));
+		BufferedReader reader = new BufferedReader(
+				new InputStreamReader(this.getClass().getResourceAsStream("worldcup-games.json")));
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			stringBuilder.append(line);
 		}
 		reader.close();
-		
+
 		return stringBuilder.toString();
 	}
 
 	/**
 	 * Read the content from the JSON file and parse it
+	 * 
 	 * @return A JSONArray containing JSONObjects
 	 * @throws IOException
 	 * @throws ParseException
 	 */
-	private JSONArray loadData() throws IOException, ParseException{
+	private JSONArray loadData() throws IOException, ParseException {
 		// Load data
 		String rawData = loadRawData();
-		
+
 		// Parse the json
 		parser = new JSONParser();
 		JSONArray data = (JSONArray) parser.parse(rawData);
-		
+
 		return data;
 	}
-	
-	private Map<String, Match> loadMatches(JSONArray data){
+
+	private Map<String, Match> loadMatches(JSONArray data) {
 		Map<String, Match> result = new HashMap<String, Match>();
 
 		// Read data on startup
@@ -121,48 +122,48 @@ public class WorldCupReader {
 
 			match.homeCountry = (String) home.get("name");
 			match.awayCountry = (String) away.get("name");
-			
+
 			String homeTag = CountryHashtags.get(match.homeCountry);
 			String awayTag = CountryHashtags.get(match.awayCountry);
-			
+
 			// For testing purposes : throw exception if a tag is not defined
 			// This will cause the build to fail
-			if(homeTag == null){
+			if (homeTag == null) {
 				// Ugly but works
 				throw new RuntimeException("No tag found for " + match.homeCountry);
 			}
-			if(awayTag == null){
+			if (awayTag == null) {
 				throw new RuntimeException("No tag found for " + match.awayCountry);
 			}
-			
+
 			String hashtag = CountryHashtags.get(match.homeCountry) + CountryHashtags.get(match.awayCountry);
-			
+
 			match.hashtag = hashtag;
-			
-			/*try {
-				match.start = this.parseTime((String) matchObject.get("time"));
-			} catch (java.text.ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+
+			/*
+			 * try { match.start = this.parseTime((String)
+			 * matchObject.get("time")); } catch (java.text.ParseException e) {
+			 * // TODO Auto-generated catch block e.printStackTrace(); }
+			 */
 			result.put(hashtag, match);
 		}
-		
+
 		return result;
 	}
-
+	/*
 	private Date parseTime(String date) throws java.text.ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT);
-        return formatter.parse(date + " -0200");
-	}
+		return formatter.parse(date + " -0200");
+	}*/
 
 	/**
 	 * Get the scheduled matches of the World Cup
+	 * 
 	 * @return a list of Matches or null if the loading failed
 	 */
 	public Map<String, Match> getMatches() {
 		// Lazy loading
-		if(this.matches == null) {
+		if (this.matches == null) {
 			this.load();
 		}
 		return this.matches;

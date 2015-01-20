@@ -1,4 +1,4 @@
-package nl.utwente.bigdata;
+package nl.utwente.bigdata.util;
 
 import java.util.HashSet;
 import java.util.Set;
