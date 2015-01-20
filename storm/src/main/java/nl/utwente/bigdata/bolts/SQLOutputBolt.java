@@ -37,6 +37,7 @@ public class SQLOutputBolt extends BaseBasicBolt {
 	private static final long serialVersionUID = -4036021649003516880L;
 
 	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	private static final TimeZone TIMEZONE = TimeZone.getTimeZone("GMT");
 
 	@SuppressWarnings("rawtypes")
 	@Override
@@ -49,15 +50,15 @@ public class SQLOutputBolt extends BaseBasicBolt {
 		
 		Date time = (Date) tuple.getValueByField("time");
 		
-		StringBuilder builder = new StringBuilder(TIME_FORMAT);
-		builder.append(SERVER_URL);
-		SimpleDateFormat dateFormat = new SimpleDateFormat();
-		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		StringBuilder builder = new StringBuilder();
+				SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_FORMAT);
+		dateFormat.setTimeZone(TIMEZONE);
 		
+		builder.append(SERVER_URL);
 		builder.append("?time=" + dateFormat.format(time));
 		builder.append("&matchhash=" + tuple.getStringByField("hashtag"));
-		builder.append("&country1=" + tuple.getStringByField("homeCountry"));
-		builder.append("&country2=" + tuple.getStringByField("awayCountry"));
+		builder.append("&country1=" + tuple.getStringByField("homeCountry").toLowerCase());
+		builder.append("&country2=" + tuple.getStringByField("awayCountry").toLowerCase());
 		builder.append("&score=" + tuple.getIntegerByField("homeScore") + "-" + tuple.getIntegerByField("awayScore"));
 		
 		collector.emit(new Values(builder.toString()));
