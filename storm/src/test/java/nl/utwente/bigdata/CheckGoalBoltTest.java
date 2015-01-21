@@ -14,7 +14,7 @@ public class CheckGoalBoltTest {
 	
 	@Test
 	public void testScorePattern(){
-		Pattern pattern = ExtractGoalFromTweetData.scorePattern;
+		Pattern pattern = ExtractGoalFromTweetData.SCORE_PATTERN;
 		
 		Matcher matcher = pattern.matcher("#GERBRA 200-1 bla bla");
 		if(matcher.find()){

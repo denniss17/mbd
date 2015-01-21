@@ -23,7 +23,7 @@ import backtype.storm.tuple.Values;
 
 public class ExtractGoalFromTweetData extends BaseBasicBolt {
 	private static final long serialVersionUID = -2632529340918678149L;
-	public static final Pattern scorePattern = Pattern.compile("(\\d+)[-:](\\d+)");
+	public static final Pattern SCORE_PATTERN = Pattern.compile("(\\d+)[-:](\\d+)");
 	private static Logger logger = Logger.getLogger(ExtractGoalFromTweetData.class.getName());
 
 	private Map<String, Match> matches;
@@ -78,7 +78,7 @@ public class ExtractGoalFromTweetData extends BaseBasicBolt {
 				// Tweet about a match
 
 				// Check for scores
-				matcher = scorePattern.matcher(text);
+				matcher = SCORE_PATTERN.matcher(text);
 
 				if (matcher.find()) {
 					// Score found
@@ -91,7 +91,7 @@ public class ExtractGoalFromTweetData extends BaseBasicBolt {
 
 						if(homeGoals < 10 && awayGoals < 10) {
 							Score score = new Score(homeGoals, awayGoals);
-							collector.emit(new Values(time, match, score));
+							collector.emit(new Values(time, hashtag, match, score));
 						}
 						
 					} catch (NumberFormatException e) {
@@ -105,6 +105,6 @@ public class ExtractGoalFromTweetData extends BaseBasicBolt {
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		declarer.declare(new Fields("time", "match", "score"));
+		declarer.declare(new Fields("time", "hashtag", "match", "score"));
 	}
 }

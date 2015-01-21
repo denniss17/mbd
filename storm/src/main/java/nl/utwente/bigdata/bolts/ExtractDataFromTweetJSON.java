@@ -58,7 +58,7 @@ public class ExtractDataFromTweetJSON extends BaseBasicBolt {
 			return; // do nothing (we might log this)
 		} catch (org.json.simple.parser.ParseException e) {
 			logger.info(e.toString());
-			e.printStackTrace();
+			//e.printStackTrace();
 			return; // do nothing
 		} catch (Exception e) {
 			e.printStackTrace();

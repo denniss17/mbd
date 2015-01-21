@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
 
+import nl.utwente.bigdata.GoalDetector;
 import nl.utwente.bigdata.util.Match;
 import nl.utwente.bigdata.util.Score;
 import backtype.storm.task.TopologyContext;
@@ -38,10 +39,13 @@ public class SQLOutputBolt extends BaseBasicBolt {
 	private static final long serialVersionUID = -4036021649003516880L;
 	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	private static final TimeZone TIMEZONE = TimeZone.getTimeZone("GMT");
+	private int session;
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void prepare(Map stormConf, TopologyContext context) {
+		// Get a session id
+		this.session = GoalDetector.session;		
 	}
 
 	@Override
@@ -61,6 +65,7 @@ public class SQLOutputBolt extends BaseBasicBolt {
 		builder.append("&country1=" + match.homeCountry.toLowerCase());
 		builder.append("&country2=" + match.awayCountry.toLowerCase());
 		builder.append("&score=" + score.T1goals + "-" + score.T2goals);
+		builder.append("&session=" + this.session);
 
 		this.executeHTTPGet(builder.toString().replace(" ", "%20"));
 	}
