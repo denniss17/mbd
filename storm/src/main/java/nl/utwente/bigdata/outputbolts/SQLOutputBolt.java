@@ -23,8 +23,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.logging.Logger;
 
 import nl.utwente.bigdata.GoalDetector;
+import nl.utwente.bigdata.bolts.ExtractDataFromTweetJSON;
 import nl.utwente.bigdata.util.Match;
 import nl.utwente.bigdata.util.Score;
 import backtype.storm.task.TopologyContext;
@@ -39,6 +41,7 @@ public class SQLOutputBolt extends BaseBasicBolt {
 	private static final long serialVersionUID = -4036021649003516880L;
 	private static final String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	private static final TimeZone TIMEZONE = TimeZone.getTimeZone("GMT");
+	private static Logger logger = Logger.getLogger(SQLOutputBolt.class.getName());
 	private int session;
 
 	@SuppressWarnings("rawtypes")
@@ -79,7 +82,8 @@ public class SQLOutputBolt extends BaseBasicBolt {
 			connection = (HttpURLConnection) url.openConnection();
 			connection.getInputStream();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
+			//e.printStackTrace();
 		} finally {
 			if (connection != null) {
 				connection.disconnect();

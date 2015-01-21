@@ -67,8 +67,8 @@ public class GoalDetector extends AbstractTopologyRunner {
 		prevId = boltId;
 
 		this.enableSQLOutput("sqloutput", prevId, builder);
-		//this.enableHDFSOutput("hdfsoutput", prevId, builder);
-		this.enablePrintOutput("printoutput", prevId, builder);
+		this.enableHDFSOutput("hdfsoutput", prevId, builder);
+		//this.enablePrintOutput("printoutput", prevId, builder);
 
 		StormTopology topology = builder.createTopology();
 		return topology;
@@ -88,7 +88,7 @@ public class GoalDetector extends AbstractTopologyRunner {
 				FileSizeRotationPolicy.Units.MB); // rotate files when they
 													// reach 1KB
 		FileNameFormat fileNameFormat = new DefaultFileNameFormat().withPath(
-				"/output/").withExtension(".csv");
+				"/user/s1228838/output/").withExtension(".csv");
 		RecordFormat format = new DelimitedRecordFormat()
 				.withFieldDelimiter(",");
 
@@ -99,7 +99,7 @@ public class GoalDetector extends AbstractTopologyRunner {
 				.withRotationPolicy(rotationPolicy)
 				.withSyncPolicy(syncPolicy)
 				.addRotationAction(
-						new MoveFileAction().toDestination("/output/old/"));
+						new MoveFileAction().toDestination("/user/s1228838/old/"));
 
 		builder.setBolt(id, bolt).shuffleGrouping(sourceId);
 	}
