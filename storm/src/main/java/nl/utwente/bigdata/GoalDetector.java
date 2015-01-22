@@ -35,6 +35,15 @@ public class GoalDetector extends AbstractTopologyRunner {
 	@Override
 	protected StormTopology buildTopology(Properties properties) {
 		TopologyBuilder builder = new TopologyBuilder();
+		
+		// Get the session id
+		try{
+			session = Integer.parseInt(properties.getProperty("session", "not given"));
+		}catch(NumberFormatException e){
+			System.out.println("Session should be an integer");
+			return null;
+		}
+		
 
 		String boltId = "kafka";
 		String prevId;
@@ -128,24 +137,19 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 	public static void main(String[] args) {
 
-		if (args.length < 2
-				|| (!args[0].equals("local") && !args[0].equals("cluster"))) {
+		if (args.length < 0 ){
+				//|| (!args[0].equals("local") && !args[0].equals("cluster"))) {
 			System.out
-					.println("Usage: storm <>.jar nl.utwente.bigdata.GoalDetector local|cluster session");
+					.println("Usage: storm <>.jar nl.utwente.bigdata.GoalDetector propertiesfile");
 		} else {
-			String[] a = new String[2];
+			/*String[] a = new String[2];
 			a[0] = "GoalDetector";
 			a[1] = args[0];
-
+*/
 			GoalDetector goalDetector = new GoalDetector();
-			try{
-				goalDetector.session = Integer.parseInt(args[1]);
-			}catch(NumberFormatException e){
-				System.out.println("Session should be an integer");
-				return;
-			}
 			
-			goalDetector.run(a);
+			
+			goalDetector.run(args);
 		}
 	}
 }
