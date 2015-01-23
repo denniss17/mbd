@@ -70,9 +70,9 @@ public class GoalDetector extends AbstractTopologyRunner {
 		builder.setBolt(boltId, new ReduceGoalStatements()).fieldsGrouping(prevId, new Fields("hashtag"));
 		prevId = boltId;
 
-		//this.enableSQLOutput("sqloutput", prevId, builder);
-		this.enableHDFSOutput("hdfsoutput", prevId, builder);
-		this.enablePrintOutput("printoutput", prevId, builder);
+		enableSQLOutput("sqloutput", prevId, builder);
+		enableHDFSOutput("hdfsoutput", prevId, builder);
+		//this.enablePrintOutput("printoutput", prevId, builder);
 
 		StormTopology topology = builder.createTopology();
 		return topology;
@@ -82,8 +82,8 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 		SyncPolicy syncPolicy = new CountSyncPolicy(1000);
 
-		// Rotate files when they reach 100 MB
-		FileRotationPolicy rotationPolicy = new FileSizeRotationPolicy(100, FileSizeRotationPolicy.Units.MB);
+		// Rotate files when they reach 1 KB (barely any output anyway)
+		FileRotationPolicy rotationPolicy = new FileSizeRotationPolicy(1, FileSizeRotationPolicy.Units.KB);
 		FileNameFormat fileNameFormat = new DefaultFileNameFormat().withPath("/user/s1340921/output/").withExtension(
 				".csv");
 		RecordFormat format = new DelimitedRecordFormat().withFieldDelimiter(",");
@@ -92,18 +92,15 @@ public class GoalDetector extends AbstractTopologyRunner {
 				.withRecordFormat(format).withRotationPolicy(rotationPolicy).withSyncPolicy(syncPolicy)
 				.addRotationAction(new MoveFileAction().toDestination("/user/s1340921/old/"));
 
-		builder.setBolt(id, bolt).shuffleGrouping(sourceId);
+		builder.setBolt(id, bolt).globalGrouping(sourceId);
 	}
-	
-	@SuppressWarnings("unused")
-	private void enableSQLOutput(String id, String sourceId, TopologyBuilder builder) {
-		// All data should be directed to one bolt:
-		// 1. It is only little data
-		// 2. The server could probably not handle many simultaneously calling
-		// bolts.
+
+	private void enableSQLOutput(String id, String sourceId, TopologyBuilder builder) 
+	{
 		builder.setBolt(id, new SQLOutputBolt()).globalGrouping(sourceId);
 	}
-	
+
+	@SuppressWarnings("unused")
 	private void enablePrintOutput(String id, String sourceId, TopologyBuilder builder) {
 		builder.setBolt(id, new PrinterBolt()).globalGrouping(sourceId);
 	}

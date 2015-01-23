@@ -22,7 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nl.utwente.bigdata.util.Match;
+import nl.utwente.bigdata.util.ReportedScores;
 import nl.utwente.bigdata.util.Score;
+import nl.utwente.bigdata.util.TupleHelpers;
+import backtype.storm.Config;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -33,56 +36,83 @@ import backtype.storm.tuple.Values;
 
 public class ReduceGoalStatements extends BaseBasicBolt {
 	private static final long serialVersionUID = 394263766896592119L;
-	private Map<String, Score> scoreMap;
-	private Map<String, Score> possibleScoreMap;
+	private static final int threshold = 100; // amount of tweets per minute for bolt to trigger
+
+	private Map<Match, ReportedScores> scoreMap;
+	private Map<Match, Score> prevScoreMap;
+
+	private Date prevEmission = null;
 
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void prepare(Map stormConf, TopologyContext context) {
-		scoreMap = new HashMap<String, Score>();
-		possibleScoreMap = new HashMap<String, Score>();
+		scoreMap = new HashMap<Match, ReportedScores>();
+		prevScoreMap = new HashMap<Match, Score>();
 	}
 
 	@Override
 	public void execute(Tuple tuple, BasicOutputCollector collector) {
 		Match match = (Match) tuple.getValueByField("match");
-		if(match == null) return;
-		
-		Date date = (Date) tuple.getValueByField("time");
-		if(date == null) return;
-		
-		Score score = (Score) tuple.getValueByField("score");
-		if(score == null) return;
-		
-		String teams;
-		if (match.hashtag != null) {
-			teams = match.hashtag;
-		} else {
+		if (match == null)
 			return;
-		}
 
-		if (scoreMap.containsKey(teams)) {
-			if (score.equals(scoreMap.get(teams))) {
-				// when the same score has been tweeted again
-				// do nothing
+		Date date = (Date) tuple.getValueByField("time");
+		if (date == null)
+			return;
+
+		Score score = (Score) tuple.getValueByField("score");
+		if (score == null)
+			return;
+
+		if (prevEmission != null) {
+			/**
+			 * Simply append the data to the data structures
+			 */
+			if (scoreMap.containsKey(match)) {
+				scoreMap.get(match).insertScore(score);
 			} else {
-				// a new score has been reported
+				scoreMap.put(match, new ReportedScores(match.hashtag, threshold));
+			}
 
-				if (score.equals(possibleScoreMap.get(teams))) {
-					// if the score was already a possible score
-					// update the score in the real score map
-					// emit the score update
-					scoreMap.put(teams, score);
-					collector.emit(new Values(date, match, score));
-				} else {
-					// enter the possible score
-					possibleScoreMap.put(teams, score);
+			/**
+			 * Execute every minute in world cup time
+			 */
+			if ((date.getTime() - prevEmission.getTime()) / 1000 > 60) {
+				// Check all matches that have scores associated with them
+				for (Map.Entry<Match, ReportedScores> entry : scoreMap.entrySet()) {
+					Match m = entry.getKey();
+					ReportedScores rs = entry.getValue();
+
+					Score mostReportedScore = rs.getMostMentionedScore();
+
+					if (mostReportedScore != null) {
+						// If there is a score which has been reported more than
+						// the threshold
+
+						// Either, the match has not yet occured in the map
+						// OR the found score in map is unequal to the
+						// mostReportedScore
+						if (!prevScoreMap.containsKey(m)) 
+						{
+							collector.emit(new Values(date, m, mostReportedScore));
+							prevScoreMap.put(m, mostReportedScore);
+						} 
+						else 
+						{
+							if (!prevScoreMap.get(m).equals(mostReportedScore)) 
+							{
+								collector.emit(new Values(date, m, mostReportedScore));
+								prevScoreMap.put(m, mostReportedScore);
+							}
+						}
+					}
 				}
+
+				scoreMap.clear();
+				prevEmission = date;
 			}
 		} else {
-			// Teams never seen before
-			scoreMap.put(teams, score);
-			possibleScoreMap.put(teams, score);
+			prevEmission = date;
 		}
 	}
 
@@ -91,15 +121,3 @@ public class ReduceGoalStatements extends BaseBasicBolt {
 		declarer.declare(new Fields("time", "match", "score"));
 	}
 }
-/*
- * if(score.equals(scoreMap.get(teams))) { //Okay, same score might have been
- * reported again } else { //Score that was not seen yet
- * 
- * 
- * if(possibleScoreMap.containsKey(teams)) { //Score was already entered as
- * possible score
- * 
- * 
- * } else { //Enter it as a possible score possibleScoreMap.put(teams, score); }
- * }
- */

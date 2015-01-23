@@ -3,6 +3,7 @@ package nl.utwente.bigdata.bolts;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
 import nl.utwente.bigdata.util.Match;
 import nl.utwente.bigdata.util.Score;
 import nl.utwente.bigdata.util.WorldCupReader;
+import backtype.storm.Config;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.BasicOutputCollector;
 import backtype.storm.topology.OutputFieldsDeclarer;
@@ -91,6 +93,7 @@ public class ExtractGoalFromTweetData extends BaseBasicBolt {
 
 						if(homeGoals < 10 && awayGoals < 10) {
 							Score score = new Score(homeGoals, awayGoals);
+							
 							collector.emit(new Values(time, hashtag, match, score));
 						}
 						

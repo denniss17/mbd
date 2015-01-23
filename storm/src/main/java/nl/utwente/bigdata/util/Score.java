@@ -6,11 +6,6 @@ public class Score {
 		T1goals = s1;
 		T2goals = s2;
 	}
-	public boolean equals(Score s2) {
-		if(this.T1goals != s2.T1goals) return false;
-		if(this.T2goals != s2.T2goals) return false;
-		return true;
-	}
 	
 	public int T1goals;
 	public int T2goals;
@@ -19,4 +14,23 @@ public class Score {
 	public String toString() {
 		return "[" + T1goals + " - " + T2goals + "]";
 	}
+	
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        return prime * T1goals + T2goals; 
+    }
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Score other = (Score) obj;
+        if (T1goals != other.T1goals || T2goals != other.T2goals)
+            return false;
+        return true;
+    }
 }
