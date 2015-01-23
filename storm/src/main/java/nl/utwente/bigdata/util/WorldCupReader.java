@@ -79,8 +79,9 @@ public class WorldCupReader {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		// Read content of json file
-		BufferedReader reader = new BufferedReader(
-				new InputStreamReader(this.getClass().getResourceAsStream("worldcup-games.json")));
+		InputStreamReader in = new InputStreamReader(this.getClass().getResourceAsStream("worldcup-games.json"));
+		BufferedReader reader = new BufferedReader(in);
+		
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 			stringBuilder.append(line);
@@ -150,11 +151,12 @@ public class WorldCupReader {
 
 		return result;
 	}
+
 	/*
-	private Date parseTime(String date) throws java.text.ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT);
-		return formatter.parse(date + " -0200");
-	}*/
+	 * private Date parseTime(String date) throws java.text.ParseException {
+	 * SimpleDateFormat formatter = new SimpleDateFormat(TIME_FORMAT); return
+	 * formatter.parse(date + " -0200"); }
+	 */
 
 	/**
 	 * Get the scheduled matches of the World Cup
