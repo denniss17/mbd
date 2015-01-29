@@ -1,9 +1,9 @@
 # GoalDetector
-## Managing Big Data, January 2015
+This project contains the source of our assignment of the Managing Big Data course at the University of Twente, January 2015.
 
-### Code overview
+## Code overview
 
-#### Kafka Spout
+### Kafka Spout
 `output: "":String`
 
 The Kafka spout took some tinkering in order to get everything connected and working. The key element is specifying `spoutConf.forceFromStart = true;`, which took some time to figure out with Storm's limited and/or outdated documentation. As we are reading a stream from Kafka, it is important that we start at the beginning every single run as otherwise we might just resume reading where someone else's program has stopped reading. Those messages get consumed by their program and would therefore be unavailable to use in ours. Specifying `spoutConf.forceFromStart = true;` gives us consistent and complete data to work with.
@@ -26,16 +26,17 @@ private void setupKafkaSpout(String id, TopologyBuilder builder, Properties prop
 }
 ```
 
-#### parser : ExtractDataFromTweetJSON
+### parser : ExtractDataFromTweetJSON
 `output: "text":String, "lang":String, "time":String, "hashtags":List<String>`
 
 Using the simple JSON parser from https://code.google.com/p/json-simple/ we extract the necessary infomation from the tweet JSON representation: the text, the language (best effort by Twitter), the time and the hashtags.
 
-#### checkgoal : ExtractGoalFromTweetData
+### checkgoal : ExtractGoalFromTweetData
 `output: "time":Date, "hashtag":String, "match":Match, "score":Score`
 
+This bolt filters all tweets containing a match hashtag. If such a tag is found in the tweet, the text of the tweet is analysed to see if it contains a score. When this is found, the tweet is emitted along with the found hashtag, the corresponding match and the extracted score.
 
-#### summarizer : ReduceGoalStatements
+### summarizer : ReduceGoalStatements
 `output: "time":Date, "match":Match, "score":Score`
 
 As we are not running our message processing in real time, but only afterwards on a Kafka stream, the built-in timings Storm has (for instance the TickerTuple) are going to be of no use to our cause. Instead, we have constructed our own timer, based on the `"time"` value received from the checkgoal bolt. This bolt keeps track of the most recently received (worldcup-)time and the previous (worldcup-)time it emitted something. If those times differ by more than 60 seconds, a new emission takes place, which emulates the effect of having a TickerTuple every minute to force the emission.
@@ -44,13 +45,13 @@ This bolt keeps track of the reported scores per game. When, after some time per
 
 We tested the threshold to be between 10 and 100 tweets mentioning the score per minute, the highest threshold gave the most accurate results.
 
-#### sqlout : SQLOutputBolt
+### sqlout : SQLOutputBolt
 We set up a PHP script on a server, with an SQL database running as well, which handles the GET requests made by the SQLOutputBolt. The parameters of the GET requests are the data outputted from the summarizer which is then simply stored into the SQL database by the PHP script. We initially designed it this way in order to completely decouple the processing of the data and the display/usage of the generated information, however, due to time constraints we ended up only doing the analysis part of the project and much less so the visualisation of the generated information.
 
-#### hdfsout : HdfsBolt
+### hdfsout : HdfsBolt
 Our hdfsout bolt writes all data that comes from the summarizer to disk, more or less as redundancy as we also write the generated data to the SQL database using the sqlout bolt. The HdfsBolt writes to hdfs://ctit048:8020 using the settings as given in the Storm assignment of Managing Big Data. The only change we made was to change the output folter to our own user home folder and we changed the FileSizeRotationPolicy to 1KB, as the summarizer is not going to emit a lot of data, in the ideal case 1 tuple per scored goal.
 
-### Deploying the program on the UT cluster
+## Deploying the program on the UT cluster
 We wrote a script in order to automate the build-upload-run cycle, which is supposed to be run from the root of the Maven project (the same location as Maven's pom.xml). The script requires to be run with the student number as parameter and having automatic authentication (passwordless login) to the cluster set up already for the ssh/scp connections.
 
 ``` bash
@@ -61,7 +62,7 @@ scp storm.properties target/storm-0.1.jar $1@ctithead1.ewi.utwente.nl:~
 ssh $1@ctithead1.ewi.utwente.nl '/usr/lib/storm/bin/storm jar storm-0.1.jar nl.utwente.bigdata.GoalDetector storm.properties'
 ```
 
-Running our Storm topology jar on the server takes a single argument, namely the filename of the configuration file. An example configuration file is given below, which is self-explanatory.
+Running our Storm topology jar on the server takes a single argument, namely the filename of the configuration file. An example configuration file is given below, which is mostly self-explanatory. The session id is used to identify a single runtime on the cluster. This makes it possible to differentiatie the various runs of the code in the SQL table.
 ```
 # Session id for database storage
 session=3
