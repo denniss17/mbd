@@ -3,9 +3,26 @@
 
 ### Code overview
 
+#### Kafka Spout
+`output: "":String`
+
+#### parser : ExtractDataFromTweetJSON
+`output: "text":String, "lang":String, "time":String, "hashtags":List<String>`
+
+#### checkgoal : ExtractGoalFromTweetData
+`output: "time":Date, "hashtag":String, "match":Match, "score":Score`
+
+#### summarizer : ReduceGoalStatements
+`output: "time":Date, "match":Match, "score":Score`
+
+#### sqlout : SQLOutputBolt
+We set up a PHP script on a server, with an SQL database running as well, which handles the GET requests made by the SQLOutputBolt. The parameters of the GET requests are the data outputted from the summarizer which is then simply stored into the SQL database by the PHP script. We initially designed it this way in order to completely decouple the processing of the data and the display/usage of the generated information, however, due to time constraints we ended up only doing the analysis part of the project and much less so the visualisation of the generated information.
+
+#### hdfsout : HdfsBolt
+Our hdfsout bolt writes all data that comes from the summarizer to disk, more or less as redundancy as we also write the generated data to the SQL database using the sqlout bolt. The HdfsBolt writes to hdfs://ctit048:8020 using the settings as given in the Storm assignment of Managing Big Data. The only change we made was to change the output folter to our own user home folder and we changed the FileSizeRotationPolicy to 1KB, as the summarizer is not going to emit a lot of data, in the ideal case 1 tuple per scored goal.
 
 ### Deploying the program on the UT cluster
-We wrote a script in order to automate the build-upload-run cycle, which is supposed to be run from the root of the Maven project (the same location as Maven's pom.xml).
+We wrote a script in order to automate the build-upload-run cycle, which is supposed to be run from the root of the Maven project (the same location as Maven's pom.xml). The script requires to be run with the student number as parameter and having automatic authentication (passwordless login) to the cluster set up already for the ssh/scp connections.
 
 ``` bash
 #!/bin/bash -e 
