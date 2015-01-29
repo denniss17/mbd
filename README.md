@@ -6,14 +6,43 @@
 #### Kafka Spout
 `output: "":String`
 
+The Kafka spout took some tinkering in order to get everything connected and working. The key element is specifying `spoutConf.forceFromStart = true;`, which took some time to figure out with Storm's limited and/or outdated documentation. As we are reading a stream from Kafka, it is important that we start at the beginning every single run as otherwise we might just resume reading where someone else's program has stopped reading. Those messages get consumed by their program and would therefore be unavailable to use in ours. Specifying `spoutConf.forceFromStart = true;` gives us consistent and complete data to work with.
+
+```java
+private void setupKafkaSpout(String id, TopologyBuilder builder, Properties properties) {
+  String topicName = "worldcup_real";
+  
+  SpoutConfig spoutConf = new SpoutConfig(
+    new ZkHosts(properties.getProperty("zkhost", "ctit048"), "/brokers"),
+    properties.getProperty("topic", topicName), 
+    "/kafka", 
+    topicName
+  );
+  
+  spoutConf.forceFromStart = true;
+  spoutConf.scheme = new TweetFormat();
+  KafkaSpout spout = new KafkaSpout(spoutConf);
+  builder.setSpout(id, spout);
+}
+```
+
 #### parser : ExtractDataFromTweetJSON
 `output: "text":String, "lang":String, "time":String, "hashtags":List<String>`
+
+Using the simple JSON parser from https://code.google.com/p/json-simple/ we extract the necessary infomation from the tweet JSON representation: the text, the language (best effort by Twitter), the time and the hashtags.
 
 #### checkgoal : ExtractGoalFromTweetData
 `output: "time":Date, "hashtag":String, "match":Match, "score":Score`
 
+
 #### summarizer : ReduceGoalStatements
 `output: "time":Date, "match":Match, "score":Score`
+
+As we are not running our message processing in real time, but only afterwards on a Kafka stream, the built-in timings Storm has (for instance the TickerTuple) are going to be of no use to our cause. Instead, we have constructed our own timer, based on the `"time"` value received from the checkgoal bolt. This bolt keeps track of the most recently received (worldcup-)time and the previous (worldcup-)time it emitted something. If those times differ by more than 60 seconds, a new emission takes place, which emulates the effect of having a TickerTuple every minute to force the emission.
+
+This bolt keeps track of the reported scores per game. When, after a minute the amount of mentions of the most-mentioned score exceed the threshold value specified, the bolt emits the time of emission, the match data and the most reported score given that it was reported more than the threshold value.
+
+We tested the threshold to be between 10 and 100 tweets mentioning the score per minute, the highest threshold gave the most accurate results.
 
 #### sqlout : SQLOutputBolt
 We set up a PHP script on a server, with an SQL database running as well, which handles the GET requests made by the SQLOutputBolt. The parameters of the GET requests are the data outputted from the summarizer which is then simply stored into the SQL database by the PHP script. We initially designed it this way in order to completely decouple the processing of the data and the display/usage of the generated information, however, due to time constraints we ended up only doing the analysis part of the project and much less so the visualisation of the generated information.
