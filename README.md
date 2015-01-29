@@ -40,7 +40,7 @@ Using the simple JSON parser from https://code.google.com/p/json-simple/ we extr
 
 As we are not running our message processing in real time, but only afterwards on a Kafka stream, the built-in timings Storm has (for instance the TickerTuple) are going to be of no use to our cause. Instead, we have constructed our own timer, based on the `"time"` value received from the checkgoal bolt. This bolt keeps track of the most recently received (worldcup-)time and the previous (worldcup-)time it emitted something. If those times differ by more than 60 seconds, a new emission takes place, which emulates the effect of having a TickerTuple every minute to force the emission.
 
-This bolt keeps track of the reported scores per game. When, after a minute the amount of mentions of the most-mentioned score exceed the threshold value specified, the bolt emits the time of emission, the match data and the most reported score given that it was reported more than the threshold value.
+This bolt keeps track of the reported scores per game. When, after some time period the amount of received mentions of the most-mentioned score for said game exceed the threshold value specified, the bolt emits the time of emission, the match data and the most reported score given that it was reported more than the threshold value.
 
 We tested the threshold to be between 10 and 100 tweets mentioning the score per minute, the highest threshold gave the most accurate results.
 
