@@ -108,8 +108,10 @@ public class GoalDetector extends AbstractTopologyRunner {
 
 	private void setupKafkaSpout(String id, TopologyBuilder builder, Properties properties) {
 
+		String topicName = "worldcup_real";
+		
 		SpoutConfig spoutConf = new SpoutConfig(new ZkHosts(properties.getProperty("zkhost", "ctit048"), "/brokers"),
-				properties.getProperty("topic", "worldcup"), "/kafka", "worldcup");
+				properties.getProperty("topic", topicName), "/kafka", topicName);
 
 		spoutConf.forceFromStart = true;
 		spoutConf.scheme = new TweetFormat();

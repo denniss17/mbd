@@ -36,7 +36,7 @@ import backtype.storm.tuple.Values;
 
 public class ReduceGoalStatements extends BaseBasicBolt {
 	private static final long serialVersionUID = 394263766896592119L;
-	private static final int threshold = 100; // amount of tweets per minute for bolt to trigger
+	private static final int threshold = 30; // amount of tweets per minute for bolt to trigger
 
 	private Map<Match, ReportedScores> scoreMap;
 	private Map<Match, Score> prevScoreMap;
